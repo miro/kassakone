@@ -1,0 +1,17 @@
+{
+  "name": "kassakone",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tukkajukka/kassakone.git"
+  },
+  "contributors": [
+    "Jukka Tupamäki <tupamaki@gmail.com>"
+  ],
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "express": "^4.0.0",
+    "morgan": "^1.0.0"
+  },
+  "private": true
+}
