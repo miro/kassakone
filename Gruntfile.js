@@ -9,9 +9,16 @@ module.exports = function(grunt) {
                 dest: 'app/js/',
                 ext: '.js'
             }
+        },
+        watch: {
+            react: {
+                files: 'app/jsx/**/*.jsx',
+                tasks: ['react']
+            }
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-react');
 
 };

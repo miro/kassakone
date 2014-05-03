@@ -6,7 +6,7 @@ define([
             "": "index" 
         },
         index: function() {
-            console.log("Index");
+            console.log("Index jeah");
         }
     });
 
