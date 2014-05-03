@@ -14,8 +14,11 @@ define([
 
     var Router = Backbone.Router.extend({
         routes: {
-            "":             "index",
-            "search":       "search"
+            ":page/":             "pageChanged"
+        },
+
+        pageChanged: function(pageName) {
+            console.log(pageName);
         },
 
         index: function() {

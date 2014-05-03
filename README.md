@@ -5,6 +5,10 @@ kassakone
 - Node.js (nodejs.org)
 - Bower (bower.io)
 
+###npm scripts
+- `npm run react` - Runs `grunt react` and starts watching for JSX files
+- `npm run server` - Starts the mock server
+
 ###Grunt tasks
 - `grunt react` - Builds JSX files and places them into app/js/
 - `grunt watch` - Watch task for building JSX files
