@@ -12,7 +12,9 @@
     "mocha": "^1.18.2",
     "express": "^4.0.0",
     "morgan": "^1.0.0",
-    "chai": "^1.9.1"
+    "chai": "^1.9.1",
+    "grunt": "^0.4.4",
+    "grunt-react": "^0.8.2"
   },
   "private": true
 }
