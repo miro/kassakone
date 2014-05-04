@@ -1,6 +1,6 @@
 {
     "Events":[
-    {   "ID": "1", "Name": "Seppo Hovin muistelmat", "Desciption": "Seppo kertoo kaskuja Kaitsusta",
+    {   "ID": "1", "Name": "Seppo Hovin muistelmat", "Description": "Seppo kertoo kaskuja Kaitsusta",
         "EventOccurances": [
             { "ID": "1", "Date": "2014.05.05", "StartTime": "18:00", "EndTime": "20:30", "TotalPlaces": 120, "ReservedPlaces": 0,   "SoldPlaces": 0},
             { "ID": "2", "Date": "2014.05.06", "StartTime": "13:00", "EndTime": "17:30", "TotalPlaces": 120, "ReservedPlaces": 100, "SoldPlaces": 0},
@@ -11,7 +11,7 @@
             { "ID": "7", "Date": "2014.05.15", "StartTime": "18:30", "EndTime": "21:00", "TotalPlaces": 120, "ReservedPlaces": 40,  "SoldPlaces": 40}
         ]
     },
-    {   "ID": "2", "Name": "Tuhkimo", "Desciption": "Tuhkimon Crocsi katoaa",
+    {   "ID": "2", "Name": "Tuhkimo", "Description": "Tuhkimon Crocsi katoaa",
         "EventOccurances": [
             { "ID": "8",  "Date": "2014.06.01", "StartTime": "12:00", "EndTime": "13:00", "TotalPlaces": 30, "ReservedPlaces": 0,  "SoldPlaces": 0},
             { "ID": "9",  "Date": "2014.06.02", "StartTime": "13:00", "EndTime": "14:00", "TotalPlaces": 30, "ReservedPlaces": 25, "SoldPlaces": 0},
@@ -22,7 +22,7 @@
             { "ID": "14", "Date": "2014.06.17", "StartTime": "18:00", "EndTime": "19:00", "TotalPlaces": 30, "ReservedPlaces": 10, "SoldPlaces": 10}
         ]
     },
-    {   "ID": "3", "Name": "Hessu", "Desciption": "Hessu ja Mikki juovat keskiolutta",
+    {   "ID": "3", "Name": "Hessu", "Description": "Hessu ja Mikki juovat keskiolutta",
         "EventOccurances": [
             { "ID": "15", "Date": "2014.07.01", "StartTime": "18:00", "EndTime": "20:00", "TotalPlaces": 1000, "ReservedPlaces": 0,    "SoldPlaces": 0},
             { "ID": "16", "Date": "2014.08.01", "StartTime": "18:00", "EndTime": "20:00", "TotalPlaces": 1000, "ReservedPlaces": 900,  "SoldPlaces": 0},
@@ -33,7 +33,7 @@
             { "ID": "21", "Date": "2015.01.11", "StartTime": "18:00", "EndTime": "20:00", "TotalPlaces": 1000, "ReservedPlaces": 333,  "SoldPlaces": 333}
         ]
     },
-    {   "ID": "4", "Name": "Menestymätön tarina", "Desciption": "Ei vielä yhtään näytöstä"
+    {   "ID": "4", "Name": "Menestymätön tarina", "Description": "Huippuvaikeaa belgialaista pöytälaatikkotositaidetta"
     }
 ]
 }
