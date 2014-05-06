@@ -16,7 +16,8 @@
         "grunt": "^0.4.4",
         "grunt-react": "^0.8.2",
         "grunt-contrib-watch": "^0.6.1",
-        "grunt-sass": "~0.12.1" 
+        "grunt-sass": "~0.12.1",
+        "grunt-autoprefixer": "~0.7.3"
     },
     "private": true,
     "scripts": {

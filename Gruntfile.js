@@ -19,6 +19,14 @@ module.exports = function(grunt) {
             }
         },
 
+        autoprefixer: {
+            dist: {
+                files: {
+                    'app/css/client.css': 'app/css/client.css'
+                }
+            }
+        },
+
         watch: {
             react: {
                 files: 'app/jsx/**/*.jsx',
@@ -27,7 +35,7 @@ module.exports = function(grunt) {
 
             scss: {
                 files: 'app/scss/*.scss',
-                tasks: ['sass']
+                tasks: ['sass', 'autoprefixer']
             }
         }
     });
@@ -35,5 +43,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-react');
     grunt.loadNpmTasks('grunt-sass');
-
+    grunt.loadNpmTasks('grunt-autoprefixer');
 };
