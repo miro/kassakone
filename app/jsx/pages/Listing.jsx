@@ -5,18 +5,22 @@ define([
     'components/Event'
 ], function(
     React,
-    EventComponent
+    Event
 ) {
     var Listing = React.createClass({
     
         render: function() {
-            var printEvent = function(model) {
-                return <li>{model.get('Name')}</li>;
-            }; 
+            function toComponent(model) {
+                var event = <Event model={model} />;
+                return event;
+            }
+
+            var eventModels = this.props.events.models;
+            var eventComponents = eventModels.map(toComponent);
 
             return (
                 <ul>
-                    {this.props.events.models.map(printEvent)}
+                    {eventComponents}
                 </ul>
             );
         }
