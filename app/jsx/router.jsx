@@ -3,9 +3,9 @@
 define([
     'backbone',
     'react',
-    'js/components/Chrome',
-    'js/pages/Listing',
-    'js/pages/Search'
+    'components/Chrome',
+    'pages/Listing',
+    'pages/Search'
 ], function(
     Backbone,
     React,

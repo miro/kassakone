@@ -1,15 +1,17 @@
 /** @jsx React.DOM */
 define([
 	'backbone',
-    'js/router',
-    'text!testdata/mockDB.json'
+    'router',
+    'text!mockDB',
+    'collections/Events'
 ], function(
 	Backbone,
 	Router,
-	mockDB
+	mockDB,
+	Events
 ) {
     var router = new Router();
 
-
     console.log(mockDB);
+    debugger;
 });

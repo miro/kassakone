@@ -2,8 +2,8 @@
 
 define([
     'react',
-    'js/components/Navigation',
-    'js/components/Container'
+    'components/Navigation',
+    'components/Container'
 ], function(
     React,
     Navigation,
