@@ -5,7 +5,7 @@ module.exports = function(grunt) {
             files: {
                 expand: true,
                 cwd: 'app/jsx/',
-                src: ['**/*.jsx'],
+                src: ['**/*.js*'],
                 dest: 'app/js/',
                 ext: '.js'
             }
@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 
         watch: {
             react: {
-                files: 'app/jsx/**/*.jsx',
+                files: 'app/jsx/**/*.js*',
                 tasks: ['react'],
                 options: {
                     livereload: true
