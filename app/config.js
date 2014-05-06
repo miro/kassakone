@@ -6,7 +6,7 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery',
         react: '../bower_components/react/react-with-addons',
         text: '../bower_components/requirejs-text/text',
-        mockDB: '../testdata/mockDB.json'
+        dummydata: '../testdata/dummydata.json'
     }
 });
 

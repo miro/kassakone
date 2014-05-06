@@ -2,16 +2,19 @@
 define([
 	'backbone',
     'router',
-    'text!mockDB',
+    'text!dummydata',
     'collections/Events'
 ], function(
 	Backbone,
 	Router,
-	mockDB,
+	dummydata,
 	Events
 ) {
     var router = new Router();
 
-    console.log(mockDB);
+    var mockDB = JSON.parse(dummydata);
+
+    this.eventsCollection = new Events();
     debugger;
+
 });
