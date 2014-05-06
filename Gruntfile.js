@@ -30,12 +30,18 @@ module.exports = function(grunt) {
         watch: {
             react: {
                 files: 'app/jsx/**/*.jsx',
-                tasks: ['react']
+                tasks: ['react'],
+                options: {
+                    livereload: true
+                },
             },
 
             scss: {
                 files: 'app/scss/*.scss',
-                tasks: ['sass', 'autoprefixer']
+                tasks: ['sass', 'autoprefixer'],
+                options: {
+                    livereload: true
+                }
             }
         }
     });
