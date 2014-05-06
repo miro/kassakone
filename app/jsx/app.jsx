@@ -3,18 +3,26 @@ define([
 	'backbone',
     'router',
     'text!dummydata',
-    'collections/Events'
+    'collections/Events',
+    'collections/EventOccurrences',
+    'collections/Reservations'
 ], function(
 	Backbone,
 	Router,
 	dummydata,
-	Events
+	Events,
+	EventOccurrences,
+	Reservations
 ) {
-    var router = new Router();
+    var router = new Router(); 
 
+    // Mock data 
     var mockDB = JSON.parse(dummydata);
 
-    this.eventsCollection = new Events();
-    debugger;
+    // Collections
+    this.eventsCollection = new Events(mockDB.Events);
+    this.eventOccurrences = new EventOccurrences(mockDB.EventOccurrences);
+    this.reservations = new Reservations(mockDB.Reservations);
+
 
 });

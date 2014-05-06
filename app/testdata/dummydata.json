@@ -19,7 +19,7 @@
         {"ID": 2, "EventOccurancesID": 3, "Name": "Seija Suurperhe", "Amount": 10}
     ],
 
-    "EventOccurances": [
+    "EventOccurrences": [
         { "ID": "1", "EventId": 1, "Date": "2014.05.05", "StartTime": "18:00", "EndTime": "20:30", "TotalPlaces": 120, "ReservedPlaces": 0,   "SoldPlaces": 0},
         { "ID": "2", "EventId": 1, "Date": "2014.05.06", "StartTime": "13:00", "EndTime": "17:30", "TotalPlaces": 120, "ReservedPlaces": 100, "SoldPlaces": 0},
         { "ID": "3", "EventId": 1, "Date": "2014.05.06", "StartTime": "18:30", "EndTime": "21:00", "TotalPlaces": 120, "ReservedPlaces": 0,   "SoldPlaces": 100},
