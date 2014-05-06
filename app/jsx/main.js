@@ -11,4 +11,16 @@ require.config({
 });
 
 // Load main module to start the app
-require(['app']);
+require([
+	'backbone',
+	'router',
+	'app'
+], function(
+	Backbone,
+	Router,
+	Application
+) {
+
+	var router = new Router();
+	return Application;
+});

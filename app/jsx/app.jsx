@@ -1,28 +1,28 @@
 /** @jsx React.DOM */
 define([
 	'backbone',
-    'router',
     'text!dummydata',
     'collections/Events',
     'collections/EventOccurrences',
     'collections/Reservations'
 ], function(
 	Backbone,
-	Router,
 	dummydata,
 	Events,
 	EventOccurrences,
 	Reservations
 ) {
-    var router = new Router(); 
+
+    var application = {}; // Wrapper for ~everything
+    application.data = {}; // Holder for all the app's data
 
     // Mock data 
     var mockDB = JSON.parse(dummydata);
 
     // Collections
-    this.eventsCollection = new Events(mockDB.Events);
-    this.eventOccurrences = new EventOccurrences(mockDB.EventOccurrences);
-    this.reservations = new Reservations(mockDB.Reservations);
+    application.data.events = new Events(mockDB.Events);
+    application.data.eventOccurrences = new EventOccurrences(mockDB.EventOccurrences);
+    application.data.reservations = new Reservations(mockDB.Reservations);
 
-
+    return application;
 });
