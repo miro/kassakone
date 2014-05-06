@@ -3,36 +3,49 @@
 define([
     'backbone',
     'react',
-    'js/components/TestComponent',
-    'js/components/TestComponent2'
+    'js/components/Chrome',
+    'js/pages/Listing',
+    'js/pages/Search'
 ], function(
     Backbone,
     React,
-    TestComponent,
-    TestComponent2
+    Chrome,
+    Listing,
+    Search
 ) {
+
+    var chrome; // Shared across routes.
+
+    function setupChrome() {
+        if(!chrome) {
+            chrome = React.renderComponent(
+                <Chrome />,
+                document.getElementById('root')
+            );                
+        }
+    }
 
     var Router = Backbone.Router.extend({
         routes: {
-            "":             "index",
-            "search":       "search"
+            "(/)": "listing",
+            "search": "search"
         },
 
-        index: function() {
-            React.renderComponent(
-                <TestComponent />,
-                document.getElementById('root')
-            );
+        listing: function() {
+            setupChrome();
+
+            chrome.setProps({
+                content: <Listing />
+            });
         },
 
         search: function() {
-            var keke = {name: "shibe"};
+            setupChrome();
 
-            React.renderComponent(
-                <TestComponent2 dog={keke} />,
-                document.getElementById('root')
-            );
-        }       
+            chrome.setProps({
+                content: <Search />
+            });
+        }
     });
 
     return function RouterWrapper() {
