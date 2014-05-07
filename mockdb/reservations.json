@@ -1,0 +1,6 @@
+{
+    "Reservations": [
+        {"ID": 1, "EventOccurancesID": 3, "Name": "Keijo Kakkonen", "Amount": 2},
+        {"ID": 2, "EventOccurancesID": 3, "Name": "Seija Suurperhe", "Amount": 10}
+    ]
+}

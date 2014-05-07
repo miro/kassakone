@@ -1,24 +1,4 @@
 {
-    "Events": [
-        {   
-            "ID": "1","Name": "Seppo Hovin muistelmat", "Description": "Seppo kertoo kaskuja Kaitsusta"
-        },
-        {   
-            "ID": "2","Name": "Tuhkimo", "Description": "Tuhkimon Crocsi katoaa"
-        },
-        {   
-            "ID": "3","Name": "Hessu", "Description": "Hessu ja Mikki juovat keskiolutta"
-        },
-        {   
-            "ID": "4","Name": "Menestymätön tarina", "Description": "Huippuvaikeaa belgialaista pöytälaatikkotositaidetta"
-        }
-    ],
-
-    "Reservations": [
-        {"ID": 1, "EventOccurancesID": 3, "Name": "Keijo Kakkonen", "Amount": 2},
-        {"ID": 2, "EventOccurancesID": 3, "Name": "Seija Suurperhe", "Amount": 10}
-    ],
-
     "EventOccurrences": [
         { "ID": "1", "EventId": 1, "Date": "2014.05.05", "StartTime": "18:00", "EndTime": "20:30", "TotalPlaces": 120, "ReservedPlaces": 0,   "SoldPlaces": 0},
         { "ID": "2", "EventId": 1, "Date": "2014.05.06", "StartTime": "13:00", "EndTime": "17:30", "TotalPlaces": 120, "ReservedPlaces": 100, "SoldPlaces": 0},
