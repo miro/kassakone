@@ -8,9 +8,14 @@ define([
     var Event = React.createClass({
         render: function() {
             return (
-                <p>
-                    Event: {this.props.Name}
-                </p>
+                <div className={"event"}>
+                    <h3 className={"name"}>
+                        {this.props.model.get('Name')}
+                    </h3>
+                    <p className={"description"}>
+                        {this.props.model.get('Description')}
+                    </p>
+                </div>
             );
         }
     });
