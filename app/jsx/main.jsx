@@ -21,5 +21,7 @@ require([
 ) {
 
 	var router = new Router();
+	Backbone.history.start();
+	console.log("App started");
 	return Application;
 });

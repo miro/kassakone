@@ -14,45 +14,36 @@ define([
     Search
 ) {
 
-    var chrome; // Shared across routes.
+    return Backbone.Router.extend({
 
-    function setupChrome() {
-        if(!chrome) {
-            chrome = React.renderComponent(
-                <Chrome />,
-                document.getElementById('root')
-            );                
-        }
-    }
-
-    var Router = Backbone.Router.extend({
+        chrome: undefined, // the root component
+        
         routes: {
             "(/)": "listing",
             "search": "search"
         },
 
-        listing: function() {
-            setupChrome();
+        initialize: function() {
+            if (!this.chrome) {
+                this.chrome = React.renderComponent(
+                    <Chrome />,
+                    document.getElementById('root')
+                );                
+            }
+        },
 
+        listing: function() {
             var listing = <Listing />;
 
-            chrome.setProps({
+            this.chrome.setProps({
                 content: listing
             });
         },
 
         search: function() {
-            setupChrome();
-
-            chrome.setProps({
+            this.chrome.setProps({
                 content: <Search />
             });
         }
     });
-
-    return function RouterWrapper() {
-        var router = new Router();
-        Backbone.history.start();
-        console.log("App started");
-    };
 });
