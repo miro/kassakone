@@ -3,14 +3,12 @@
 define([
     'backbone',
     'react',
-    'app',
     'components/Chrome',
     'pages/Listing',
     'pages/Search'
 ], function(
     Backbone,
     React,
-    application,
     Chrome,
     Listing,
     Search
@@ -36,8 +34,10 @@ define([
         listing: function() {
             setupChrome();
 
+            var listing = <Listing />;
+
             chrome.setProps({
-                content: <Listing events={application.data.events} />
+                content: listing
             });
         },
 
