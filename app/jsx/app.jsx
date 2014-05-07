@@ -16,7 +16,7 @@ define([
     var application = {}; // Wrapper for ~everything
     application.data = {}; // Holder for all the app's data
 
-    // Mock data 
+    // Mock data
     var mockDB = JSON.parse(dummydata);
 
     // Collections
