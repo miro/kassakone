@@ -21,7 +21,8 @@
     },
     "private": true,
     "scripts": {
-        "react": "grunt react && grunt watch",
+        "watch": "grunt sass && grunt react && grunt watch",
+        "react": "npm run watch",
         "server": "node server.js"
     }
 }

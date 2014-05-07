@@ -1,4 +1,4 @@
-kassakone
+Kassakone
 =========
 
 ###Development environment
@@ -6,12 +6,13 @@ kassakone
 - Bower (bower.io)
 
 ###npm scripts
-- `npm run react` - Runs `grunt react` and starts watching for JSX files
-- `npm run server` - Starts the mock server
+- `npm run watch` - Runs `grunt react`, `grunt sass` and starts watching for JSX and SCSS changes
+- `npm start` - Starts the mock server
 
 ###Grunt tasks
+- `grunt watch` - Watch task for building JSX & CSS files
+- `grunt sass` - Builds CSS files and places them into app/css/
 - `grunt react` - Builds JSX files and places them into app/js/
-- `grunt watch` - Watch task for building JSX files
 
 ###Coding conventions
 - Indentation: 4 spaces, no tabs
