@@ -1,13 +1,11 @@
 /** @jsx React.DOM */
 define([
 	'backbone',
-    'text!dummydata',
     'collections/Events',
     'collections/EventOccurrences',
     'collections/Reservations'
 ], function(
 	Backbone,
-	dummydata,
 	Events,
 	EventOccurrences,
 	Reservations
@@ -16,13 +14,10 @@ define([
     var application = {}; // Wrapper for ~everything
     application.data = {}; // Holder for all the app's data
 
-    // Mock data 
-    var mockDB = JSON.parse(dummydata);
-
     // Collections
-    application.data.events = new Events(mockDB.Events);
-    application.data.eventOccurrences = new EventOccurrences(mockDB.EventOccurrences);
-    application.data.reservations = new Reservations(mockDB.Reservations);
+    application.data.events = new Events();
+    application.data.eventOccurrences = new EventOccurrences();
+    application.data.reservations = new Reservations();
 
     return application;
 });
