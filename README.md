@@ -1,4 +1,4 @@
-Kassakone
+KASSAKONE
 =========
 
 ###Development environment
