@@ -5,13 +5,15 @@ define([
     'react',
     'components/Chrome',
     'pages/Listing',
-    'pages/Search'
+    'pages/Search',
+    'app'
 ], function(
     Backbone,
     React,
     Chrome,
     Listing,
-    Search
+    Search,
+    App
 ) {
 
     return Backbone.Router.extend({
@@ -33,11 +35,13 @@ define([
         },
 
         listing: function() {
-            var listing = <Listing />;
+            var listing = <Listing events={App.data.events} />;
 
             this.chrome.setProps({
                 content: listing
             });
+
+            App.refreshData();
         },
 
         search: function() {

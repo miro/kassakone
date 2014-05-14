@@ -9,7 +9,7 @@ define([
 ) {
 
 	return Backbone.Collection.extend({
-        url: '/api/mock/reservation.json',
+        url: '/api/mock/reservations.json',
         model: Reservation
 	});
 

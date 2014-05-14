@@ -6,7 +6,7 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery',
         react: '../bower_components/react/react-with-addons',
         text: '../bower_components/requirejs-text/text',
-        'react.backbone': 'react.backbone'
+        'react-backbone': 'react-backbone'
     }
 });
 
@@ -14,7 +14,8 @@ require.config({
 require([
 	'backbone',
 	'router',
-	'app'
+	'app',
+    'react-backbone'
 ], function(
 	Backbone,
 	Router,

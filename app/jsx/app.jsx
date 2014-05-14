@@ -19,5 +19,13 @@ define([
     application.data.eventOccurrences = new EventOccurrences();
     application.data.reservations = new Reservations();
 
+    application.refreshData = function refreshData() {
+        _.values(application.data).forEach(function fetch(collection) {
+            collection.fetch().then(function(collection, status) {
+                console.log("Fetched data", "Status: " + status, collection);
+            });
+        });
+    };
+
     return application;
 });

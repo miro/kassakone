@@ -1,10 +1,13 @@
+/** @jsx React.DOM */
 
 define([
     'underscore',
-    'backbone'
+    'backbone',
+    'react'
 ], function(
     _,
-    Backbone
+    Backbone,
+    React
 ) {
 
 
