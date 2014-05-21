@@ -3,17 +3,22 @@
 define([
     'backbone',
     'react',
+    'app',
     'components/Chrome',
     'pages/Listing',
     'pages/Search',
-    'app'
+    'pages/Event',
+    'models/Event'
+    
 ], function(
     Backbone,
     React,
+    App,
     Chrome,
     Listing,
     Search,
-    App
+    Event,
+    EventModel
 ) {
 
     return Backbone.Router.extend({
@@ -22,7 +27,8 @@ define([
         
         routes: {
             "(/)": "listing",
-            "search": "search"
+            "search": "search",
+            "event/:id": "event"
         },
 
         initialize: function() {
@@ -47,6 +53,14 @@ define([
         search: function() {
             this.chrome.setProps({
                 content: <Search />
+            });
+        },
+
+        event: function(id) {
+            var eventModel = new EventModel({id: id});
+            eventModel.fetch();
+            this.chrome.setProps({
+                content: <Event eventId={id} model={eventModel}/>
             });
         }
     });
