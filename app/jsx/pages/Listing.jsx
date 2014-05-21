@@ -12,13 +12,9 @@ define([
     $
 ) {
     var Listing = React.createClass({
-        mixins: [
-            React.Backbone
-        ],
         
-        updateOnProps: {
-            events: 'collection'
-        },
+        mixins: [React.Backbone],
+        updateOnProps: { events: 'collection'},
 
         render: function() {
             var eventModels = this.props.events.models,
