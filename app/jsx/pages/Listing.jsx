@@ -17,8 +17,9 @@ define([
         updateOnProps: { events: 'collection'},
 
         render: function() {
-            var eventModels = this.props.events.models,
-                eventComponents;
+            // TODO tää varmaan kannattais tehä jossai muualla kun renderissä, vai? nyt joka kerta räjäytetään kaikki meiän modelit!
+            var eventModels = this.props.events.models;
+            var eventComponents;
 
             function toComponent(model) {
                 var event = <Event key={model.cid} model={model} />;
