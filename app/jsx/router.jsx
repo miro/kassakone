@@ -13,11 +13,11 @@ define([
 ], function(
     Backbone,
     React,
-    App,
+    app,
     Chrome,
-    Listing,
-    Search,
-    Event,
+    ListingPage,
+    SearchPage,
+    EventPage,
     EventModel
 ) {
 
@@ -41,26 +41,26 @@ define([
         },
 
         listing: function() {
-            var listing = <Listing events={App.data.events} />;
+            var listing = <ListingPage events={app.data.events} />;
 
             this.chrome.setProps({
                 content: listing
             });
 
-            App.refreshData();
+            app.refreshData();
         },
 
         search: function() {
             this.chrome.setProps({
-                content: <Search />
+                content: <SearchPage />
             });
         },
 
         event: function(id) {
             var eventModel = new EventModel({id: id});
-            eventModel.fetch();
+            eventModel.fetch()
             this.chrome.setProps({
-                content: <Event eventId={id} model={eventModel}/>
+                content: <EventPage eventId={id} model={eventModel}/>
             });
         }
     });
