@@ -17,13 +17,13 @@ define([
                 switch(events) {
                     case 'collection': 
                         events = 'add remove reset sort';
-                    break;
+                        break;
                     case 'model':
                         events = 'change';
                 }
                 this.listenTo(props[propName], events, function() { this.forceUpdate(); })
-            }, this)
-        },
+                }, this)
+            },
 
         componentDidMount: function() {
             this.listenToProps(this.props);

@@ -19,19 +19,7 @@ define([
     var Listing = React.createClass({
 
         mixins: [React.Backbone],
-
-
-        componentDidMount: function() {
-            this.props.model.on('change', function() {
-              this.forceUpdate();
-            }.bind(this));
-          },
-
-        getInitialState: function() {
-            // debugger;
-            // this.props.model.fetch();
-            return null;
-        },
+        updateOnProps: { 'model': 'model' },
         
         render: function() {
             return <div className={"event"}>
