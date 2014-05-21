@@ -1,14 +1,14 @@
 [
     {   
-        "ID": "1","Name": "Seppo Hovin muistelmat", "Description": "Seppo kertoo kaskuja Kaitsusta"
+        "id": "1","name": "Seppo Hovin muistelmat", "description": "Seppo kertoo kaskuja Kaitsusta"
     },
     {   
-        "ID": "2","Name": "Tuhkimo", "Description": "Tuhkimon Crocsi katoaa"
+        "id": "2","name": "Tuhkimo", "description": "Tuhkimon Crocsi katoaa"
     },
     {   
-        "ID": "3","Name": "Hessu", "Description": "Hessu ja Mikki juovat keskiolutta"
+        "id": "3","name": "Hessu", "description": "Hessu ja Mikki juovat keskiolutta"
     },
     {   
-        "ID": "4","Name": "Menestymätön tarina", "Description": "Huippuvaikeaa belgialaista pöytälaatikkotositaidetta"
+        "id": "4","name": "Menestymätön tarina", "description": "Huippuvaikeaa belgialaista pöytälaatikkotositaidetta"
     }
 ]
