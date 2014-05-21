@@ -1,17 +1,19 @@
 define([
     'underscore',
-    'backbone'
+    'backbone',
+    'config'
 ], function (
     _,
-    Backbone
+    Backbone,
+    config
 ) {
 
     return Backbone.Model.extend({
         defaults: {
-            'ID': null,
-            'Name': null,
-            'Description': null
-        }
+            name: 'tempname'
+        },
+
+        url: config.baseUrl + '/api/mock/eventtest.json'
     });
     
 });
