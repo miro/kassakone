@@ -9,7 +9,7 @@ define([
     Backbone,
     React
 ) {
-
+    // from http://leoasis.github.io/posts/2014/03/22/from_backbone_views_to_react/
 
     React.Backbone = {
         listenToProps: function(props) {
