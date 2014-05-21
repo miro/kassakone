@@ -20,9 +20,12 @@ define([
 
         mixins: [React.Backbone],
 
-        getBackboneModels: function() {
-            return this.props.model;
-        },
+
+        componentDidMount: function() {
+            this.props.model.on('change', function() {
+              this.forceUpdate();
+            }.bind(this));
+          },
 
         getInitialState: function() {
             // debugger;
@@ -39,10 +42,6 @@ define([
                     {this.props.model.get('description')}
                 </p>
             </div>
-        },
-
-        componentWillUpdate: function componentWillUpdate(object nextProps, object nextState) {
-            debugger;
         }
 
     });
