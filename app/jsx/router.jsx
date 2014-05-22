@@ -32,6 +32,8 @@ define([
         },
 
         initialize: function() {
+            app.refreshData();
+
             if (!this.chrome) {
                 this.chrome = React.renderComponent(
                     <Chrome />,
@@ -46,8 +48,6 @@ define([
             this.chrome.setProps({
                 content: listing
             });
-
-            app.refreshData();
         },
 
         search: function() {
@@ -58,9 +58,13 @@ define([
 
         event: function(id) {
             var eventModel = new EventModel({id: id});
-            eventModel.fetch()
+            eventModel.fetch();
+
             this.chrome.setProps({
-                content: <EventPage eventId={id} model={eventModel}/>
+                content: <EventPage 
+                    eventId={id} 
+                    model={eventModel}
+                    occurrences={app.data.eventOccurrences} />
             });
         }
     });
