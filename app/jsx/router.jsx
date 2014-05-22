@@ -4,20 +4,24 @@ define([
     'backbone',
     'react',
     'app',
+    'credentials',
     'components/Chrome',
     'pages/Listing',
     'pages/Search',
     'pages/Event',
+    'pages/Login',
     'models/Event'
     
 ], function(
     Backbone,
     React,
     app,
+    credentials,
     Chrome,
     ListingPage,
     SearchPage,
     EventPage,
+    LoginPage,
     EventModel
 ) {
 
@@ -28,6 +32,7 @@ define([
         routes: {
             "(/)": "listing",
             "search": "search",
+            "login": "login",
             "event/:id": "event"
         },
 
@@ -38,8 +43,14 @@ define([
                 this.chrome = React.renderComponent(
                     <Chrome />,
                     document.getElementById('root')
-                );                
+                );          
             }
+        },
+
+        login: function() {
+            this.chrome.setProps({
+                content: <LoginPage />
+            });
         },
 
         listing: function() {

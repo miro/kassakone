@@ -22,8 +22,15 @@ require([
 	Application
 ) {
 
-	var router = new Router();
+	Application.router = new Router();
 	Backbone.history.start();
+	
+	// Shortcut for navigation
+	Application.navigate = function (route) {
+		app.router.navigate(route, {trigger: true});
+	};
+
 	console.log("App started");
+
 	return Application;
 });
