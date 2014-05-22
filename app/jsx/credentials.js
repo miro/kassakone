@@ -35,10 +35,8 @@ define([
         loginAsync: function (username, password) {
             var credentials = this;
             username = username || localStorage["username"];
-            //password = password || localStorage["token"];
 
             return $.ajax({
-                //url: 'http://muro.spinni.org/api/login',
                 url: 'http://riot.azurewebsites.net/Token',
                 type: "POST",
                 datatype : "json",

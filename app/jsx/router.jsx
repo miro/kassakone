@@ -30,10 +30,11 @@ define([
         chrome: undefined, // the root component
         
         routes: {
-            "(/)": "listing",
+            "(/)": "events",
+            "events": "events",
             "search": "search",
             "login": "login",
-            "event/:id": "event"
+            "event/:id": "events"
         },
 
         initialize: function() {
@@ -47,36 +48,60 @@ define([
             }
         },
 
+        jumpTo: function(route) { // shortcut for navigate
+            this.navigate(route, {trigger: true});
+        },
+
+        checkCredentials: function() {
+            if (!credentials.authenticated()) {
+                console.log('Unauthenticated, jump to login');
+                this.jumpTo('login');
+                return false;
+            }
+            return true;
+        },
+
+
+
+        // Route handlers -----------------------------------------
+
         login: function() {
             this.chrome.setProps({
                 content: <LoginPage />
             });
         },
 
-        listing: function() {
-            var listing = <ListingPage events={app.data.events} />;
+        events: function() {
+            if (this.checkCredentials()) {
 
-            this.chrome.setProps({
-                content: listing
-            });
+                var listing = <ListingPage events={app.data.events} />;
+
+                this.chrome.setProps({
+                    content: listing
+                });
+            }
         },
 
         search: function() {
-            this.chrome.setProps({
-                content: <SearchPage />
-            });
+            if (this.checkCredentials()) {
+                this.chrome.setProps({
+                    content: <SearchPage />
+                });
+            }
         },
 
         event: function(id) {
-            var eventModel = new EventModel({id: id});
-            eventModel.fetch();
+            if (this.checkCredentials()) {
+                var eventModel = new EventModel({id: id});
+                eventModel.fetch();
 
-            this.chrome.setProps({
-                content: <EventPage 
-                    eventId={id} 
-                    model={eventModel}
-                    occurrences={app.data.eventOccurrences} />
-            });
+                this.chrome.setProps({
+                    content: <EventPage 
+                        eventId={id} 
+                        model={eventModel}
+                        occurrences={app.data.eventOccurrences} />
+                });
+            }
         }
     });
 });

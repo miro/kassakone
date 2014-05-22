@@ -14,23 +14,17 @@ require.config({
 require([
 	'backbone',
 	'router',
-	'app',
-    'react-backbone'
+	'app'
 ], function(
 	Backbone,
 	Router,
-	Application
+	app
 ) {
 
-	Application.router = new Router();
+	app.router = new Router();
 	Backbone.history.start();
-	
-	// Shortcut for navigation
-	Application.navigate = function (route) {
-		app.router.navigate(route, {trigger: true});
-	};
 
 	console.log("App started");
 
-	return Application;
+	return app;
 });
