@@ -29,9 +29,9 @@ define([
             eventComponents = eventModels.map(toComponent);
 
             return (
-                <ul>
+                <div>
                     {eventComponents}
-                </ul>
+                </div>
             );
         }
     });
