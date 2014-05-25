@@ -11,7 +11,7 @@ define([
 ) {
 
     return Backbone.Collection.extend({
-        url: config.baseUrl + '/Event',
+        url: config.baseUrl + 'Event',
         model: Event
     });
     
