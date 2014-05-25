@@ -6,19 +6,21 @@ define([
     'components/Reservation',
     'app',
     'jquery',
-    'models/Reservation'
+    'models/Reservation',
+    'react-backbone'
 ], function(
     _,
     React,
     Reservation,
     App,
     $,
-    ReservationModel
+    ReservationModel,
+    rbbMixin
 ) {
 
     var Listing = React.createClass({
 
-        mixins: [React.Backbone],
+        mixins: [rbbMixin],
         updateOnProps: {
             'model': 'model'
          },
@@ -26,11 +28,14 @@ define([
         render: function() {
 
             return <div className={"reservation"}>
-                <h3 className={"name"}>
-                    Name:  {this.props.model.get('Name')}
+                <h3 className={"id"}>
+                    ID:  {this.props.model.get('id')}
                 </h3>
-                <p className={"amount"}>
-                    Amount: {this.props.model.get('Amount')}
+                <p className={"expired"}>
+                    Expired: {this.props.model.get('expired') ? 'YES' : 'NO'}
+                </p>
+                <p className={"redeemed"}>
+                    Redeemed: {this.props.model.get('redeemed') ? 'YES' : 'NO'}
                 </p>
             </div>
         }

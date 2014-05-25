@@ -10,10 +10,13 @@ define([
 
     return Backbone.Model.extend({
         defaults: {
-            'ID': null,
+            'id': null,
+            'expired': null,
+            'redeemed': null
+            /*'ID': null,
             'EventOccurancesID': null,
             'Name': null,
-            'Amount': null
+            'Amount': null*/
         },
 
         url: function() {
