@@ -13,7 +13,7 @@ define([
             name: 'tempname'
         },
 
-        url: config.baseUrl + '/api/mock/eventtest.json'
+        url: config.baseUrl + '/Event/' + (!_.isUndefined(this.id) ? this.id : '')
     });
     
 });
