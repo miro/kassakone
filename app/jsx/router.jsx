@@ -55,6 +55,7 @@ define([
 
         jumpTo: function(route) { // shortcut for navigate
             this.navigate(route, {trigger: true});
+            // TODO: change navigation buttons state here?
         },
 
         checkCredentials: function() {
@@ -130,6 +131,14 @@ define([
                 }
 
                 reservationModel.fetch().then(updateWhenLoaded.bind(this));
+            }
+        },
+
+        search: function() {
+            if (this.checkCredentials()) {
+                this.chrome.setProps({
+                    content: <SearchPage />
+                });
             }
         }
     });

@@ -11,8 +11,9 @@ define([
         render: function() {
             return <div className="navigation-bar">
                     <div className="links">
-                        <a href="#">My Events</a>
-                        <a href="#reservation/1">Reservation 1</a>
+                        <a href="#">Events</a>
+                        <a href="#search">Search</a>
+                        <a href="#reservation/1">TEMP Reservation 1</a>
                         <a href="#logout">Logout</a>
                     </div>  
                 </div>

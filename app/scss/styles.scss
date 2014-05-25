@@ -31,7 +31,8 @@ body {
 
 
 
-.button {
+.button,
+button {
     padding: 1em;
     color: #fff;
     text-transform: uppercase;
@@ -40,6 +41,7 @@ body {
     border: 0;
     font-weight: 100;
     letter-spacing: 0.1em;
+    text-align: center;
 
     cursor: pointer;
 
@@ -48,6 +50,11 @@ body {
     &:hover {
         background: $red-light;
     }
+
+    &.full {
+        width: 100%;
+    }
+
 
 }
 .small-button {
@@ -113,8 +120,7 @@ h3 {
 
 .title {
     display: inline-block;
-    color: white;
-    background-color: $red;
+    border: 1px solid $red;
     width: 100%;
     text-align: center;
     padding: 1em 0.5em;
@@ -160,10 +166,18 @@ h3 {
     }
 }
 
+// Search page ---------------------------------
+.search-page {
+    input {
+        font-size: 2em;
+        padding: 0.1em;
+    }
+}
+
 
 
 // #### COMPONENTS ##############################
-// Event page --------------------------------
+// Occurrence --------------------------------
 .occurrence-component {
     margin: 2em 1em;
     padding: 2em 1em;
