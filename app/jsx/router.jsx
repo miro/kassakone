@@ -10,7 +10,9 @@ define([
     'pages/Search',
     'pages/Event',
     'pages/Login',
-    'models/Event'
+    'pages/Reservation',
+    'models/Event',
+    'models/Reservation'
     
 ], function(
     Backbone,
@@ -22,7 +24,9 @@ define([
     SearchPage,
     EventPage,
     LoginPage,
-    EventModel
+    ReservationPage,
+    EventModel,
+    ReservationModel
 ) {
 
     return Backbone.Router.extend({
@@ -36,7 +40,8 @@ define([
             "search": "search",
             "login": "login",
             "logout": "logout",
-            "event/:id": "event"
+            "event/:id": "event",
+            "reservation/:id": "reservation"
         },
 
         initialize: function() {
@@ -109,6 +114,19 @@ define([
                         eventId={id} 
                         model={eventModel}
                         occurrences={app.data.eventOccurrences} />
+                });
+            }
+        },
+
+        reservation: function(id) {
+            if (this.checkCredentials()) {
+                var reservationModel = new ReservationModel({id: id});
+                reservationModel.fetch();
+
+                this.chrome.setProps({
+                    content: <ReservationPage 
+                        reservationId={id} 
+                        model={reservationModel} />
                 });
             }
         }
