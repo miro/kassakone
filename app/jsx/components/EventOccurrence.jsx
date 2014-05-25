@@ -1,29 +1,33 @@
 /** @jsx React.DOM */
 
 define([
-    'react'
+    'react',
+    'react-backbone'
 ], function(
-    React
+    React,
+    rbbMixin
 ) {
     var EventOccurrence = React.createClass({
 
-        // mixins: [React.Backbone],
-        // updateOnProps: { 'model': 'model' },
+        mixins: [rbbMixin],
+        updateOnProps: { 'model': 'model' },
 
         render: function() {
-            console.log(this.props.model.toJSON());
+            var href = "/#event/occurrence" + this.props.model.get('id');
 
-            return (
-                <div className="occurrence">
-                    <div className="date">
-                        <span className="date">{this.props.model.get('date')}</span>
-                        <span className="start-time">{this.props.model.get('startTime')}</span>
-                    </div>
-                    <div className="status">
-                        {this.props.model.get('reservedPlaces')} + {this.props.model.get('totalPlaces')} / {this.props.model.get('soldPlaces')}
-                    </div>
+            return <div className="occurrence">
+                <div className="date">
+                    <span className="date">{this.props.model.get('date')}</span>
+                    <span className="start-time">{this.props.model.get('startTime')}</span>
                 </div>
-            );
+                <div className="status">
+                    {this.props.model.get('reservedPlaces')} + {this.props.model.get('totalPlaces')} / {this.props.model.get('soldPlaces')}
+                </div>
+                <div className="buttons">
+                    <a href={href} className="small-button">Details</a>
+                </div>
+            </div>
+
         }
     });
     return EventOccurrence;
