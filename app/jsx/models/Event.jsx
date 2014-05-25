@@ -10,7 +10,7 @@ define([
 
     return Backbone.Model.extend({
         defaults: {
-            name: 'tempname'
+            name: null
         },
 
         url: function() {
