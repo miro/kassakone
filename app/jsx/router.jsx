@@ -40,8 +40,6 @@ define([
         },
 
         initialize: function() {
-            app.refreshData();
-
             if (!this.chrome) {
                 this.chrome = React.renderComponent(
                     <Chrome />,
@@ -80,7 +78,7 @@ define([
 
         events: function() {
             if (this.checkCredentials()) {
-
+                app.data.events.fetch();
                 var listing = <ListingPage events={app.data.events} />;
 
                 this.chrome.setProps({
@@ -99,8 +97,12 @@ define([
 
         event: function(id) {
             if (this.checkCredentials()) {
+                
                 var eventModel = new EventModel({id: id});
                 eventModel.fetch();
+
+                app.data.eventOccurrences.meta('eventId', id);
+                app.data.eventOccurrences.fetch();
 
                 this.chrome.setProps({
                     content: <EventPage 
