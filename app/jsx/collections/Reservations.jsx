@@ -1,15 +1,17 @@
 define([
 	'underscore',
 	'backbone',
-    'models/Reservation'
+    'models/Reservation',
+    'config'
 ], function (
 	_,
 	Backbone,
-    Reservation
+    Reservation,
+    config
 ) {
 
 	return Backbone.Collection.extend({
-        url: '/api/mock/reservations.json',
+        url: config.baseUrl + '/Reservation',
         model: Reservation
 	});
 
