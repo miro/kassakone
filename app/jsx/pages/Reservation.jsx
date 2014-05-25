@@ -3,7 +3,6 @@
 define([
     'underscore',
     'react',
-    'components/Reservation',
     'app',
     'jquery',
     'models/Reservation',
@@ -11,7 +10,6 @@ define([
 ], function(
     _,
     React,
-    Reservation,
     App,
     $,
     ReservationModel,
