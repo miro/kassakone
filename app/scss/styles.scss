@@ -112,6 +112,16 @@ h3 {
     color: $red;
 }
 
+.title {
+    display: inline-block;
+    color: white;
+    background-color: $red;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0.5em;
+    margin: 0.5em 0;
+}
+
 .center {
     text-align: center;
 }
