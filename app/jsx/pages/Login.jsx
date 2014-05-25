@@ -14,11 +14,18 @@ define([
     var Login = React.createClass({
         getInitialState: function getInitialState() {
             return {
-                notificationText: null
+                notificationText: "",
+                username: "",
+                password: ""
             }
         },
 
         handleLogin: function(event) {
+            event.preventDefault();
+
+            var username = this.state.username;
+            var password = this.state.password;
+            
             function onSuccess() {
                 console.log("Login OK!");
                 app.router.jumpTo('');
@@ -37,18 +44,17 @@ define([
             }
 
             credentials
-                .loginAsync(this.state.user, this.state.password)
+                .loginAsync(username, password)
                 .then(onSuccess.bind(this))
                 .fail(onFailure.bind(this));
         },
 
-        handleChange: function(field, e) {
-            //e.preventDefault(); // handles enter key
+        handleChange: function(field, event) {
+            event.preventDefault();
             var nextState = {};
-            nextState[field] = e.target.value;
+            nextState[field] = event.target.value;
             this.setState(nextState);
         },
-
 
         render: function() {
             var showNotificationArea = this.state.notificationText ? 'show' : '';
@@ -60,12 +66,25 @@ define([
                         <img src="/images/kassakone.jpg" />
                         <h1>Kassakone</h1>
                     </div>
+                    
                     <div className={notificationAreaClasses}>
                         <span className="notification-text">{this.state.notificationText}</span>
                     </div>
+
                     <form onSubmit={this.handleLogin}>
-                        <input className="input" placeholder="Username" onChange={this.handleChange.bind(this, 'user')} />
-                        <input className="input" type="password" placeholder="Password" onChange={this.handleChange.bind(this, 'password')}/>
+                        <input
+                            name="username" 
+                            className="input" 
+                            placeholder="Username" 
+                            onChange={this.handleChange.bind(this, 'username')} />
+
+                        <input 
+                            name="password" 
+                            className="input" 
+                            placeholder="Password" 
+                            onChange={this.handleChange.bind(this, 'password')} 
+                            type="password" />
+                        
                         <button className="button">Log in</button>
                     </form>
                 </div>
