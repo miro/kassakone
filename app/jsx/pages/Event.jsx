@@ -39,7 +39,7 @@ define([
             var occurrenceComponents = []; 
 
             _.each(occurrenceModels, function(model) {
-                occurrenceComponents.push(<OccurrenceComponent model={model} />);
+                occurrenceComponents.push(<OccurrenceComponent model={model} key={model.id} />);
             });
 
             return (
