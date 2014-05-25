@@ -4,16 +4,16 @@ define([
     'react',
     'components/Event',
     'app',
-    'jquery'
+    'react-backbone'
 ], function(
     React,
     Event,
     App,
-    $
+    rbbMixin
 ) {
     var Listing = React.createClass({
         
-        mixins: [React.Backbone],
+        mixins: [rbbMixin],
         updateOnProps: { events: 'collection'},
 
         render: function() {

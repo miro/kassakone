@@ -7,7 +7,8 @@ define([
     'app',
     'jquery',
     'models/Event',
-    'components/Occurrence'
+    'components/Occurrence',
+    'react-backbone'
 ], function(
     _,
     React,
@@ -15,16 +16,23 @@ define([
     App,
     $,
     EventModel,
-    OccurrenceComponent
+    OccurrenceComponent,
+    rbbMixin
 ) {
 
-    var Listing = React.createClass({
+    var EventPage = React.createClass({
 
-        mixins: [React.Backbone],
+        mixins: [rbbMixin],
         updateOnProps: {
-            'model': 'model',
-            'occurrences': 'collection'
-         },
+            model: 'model',
+            occurrences: 'collection'
+        },
+        
+
+
+        getInitialState: function() {
+            return null;
+        },
         
         render: function() {
             // TODO onko tätä järkeä tehä renderissä vai rendataanko tämä aina vaan kerran??
@@ -49,5 +57,5 @@ define([
         }
 
     });
-    return Listing;
+    return EventPage;
 });
