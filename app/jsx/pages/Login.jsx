@@ -16,6 +16,7 @@ define([
         handleLogin: function(event) {
             credentials.loginAsync(this.state.user, this.state.password)
             .then(function() {
+                console.log("Login OK!");
                 app.navigate('listing');
             })
             .fail(function(jqXHR, textStatus, errorThrown) {

@@ -11,6 +11,24 @@ define([
 
     var credentials = {
 
+        _initialize: function () {
+            var credentials = this;
+            // // Set username and token as a part of every ajax request
+            // $.ajaxPrefilter( function( options ) {
+            //     if (config.endpoint.urlRequiresCredentials(options.url) && credentials.authenticated()) {
+            //         var credentialsString =
+            //             'username=' + (localStorage["username"] || '') +
+            //             '&token=' + (localStorage["token"] || '');
+            //         if (options.url.indexOf('?') === -1) {
+            //             options.url += '?' + credentialsString;
+            //         } else {
+            //             options.url += '&' + credentialsString;
+            //         }
+            //     }
+            // });
+
+        },
+
         _set: function (username, token) {
             localStorage["username"] = username;
             localStorage["token"] = token;
@@ -37,18 +55,14 @@ define([
             username = username || localStorage["username"];
 
             return $.ajax({
-                url: 'http://riot.azurewebsites.net/Token',
+                url: 'http://riot.azurewebsites.net/api/Token',
                 type: "POST",
                 datatype : "json",
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                data: JSON.stringify({ 
-                    user: username,
-                    password: password,
-                    grant_type: password
-                })
-            }).then(function() {
+                data: "username=" + username + "&password=" + password + "&grant_type=password"
+            }).then(function(response) {
                 // Authentication was successful -> save login credentials to local storage
-                credentials._set(username, token);
+                credentials._set(response.userName, response.access_token);
             });
         },
 
@@ -57,6 +71,8 @@ define([
         }
     };
 
+    credentials._initialize();
+    //return _.bindAll(credentials);
     return credentials;
 
 });
