@@ -6,6 +6,7 @@ require.config({
         jquery: '../bower_components/jquery/dist/jquery',
         react: '../bower_components/react/react-with-addons',
         text: '../bower_components/requirejs-text/text',
+        moment: '../bower_components/moment/moment',
         'react-backbone': 'react-backbone'
     }
 });

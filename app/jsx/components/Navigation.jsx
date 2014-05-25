@@ -10,13 +10,13 @@ define([
     var Navigation = React.createClass({
         render: function() {
             return (
-                <div>
-                    <a href="#search">Search</a> | 
-                    <a href="#">Home</a> |
+                <div className="navigation-bar">
+                    <div className="links">
                     <a href="#events">Events</a> |
-                    <a href="#reservation/1">Reservation</a> |
+                    <a href="#reservation/1">Reservation 1</a> |
                     <a href="#logout">Logout</a>
                 </div>
+            </div>
             );
         }
     });

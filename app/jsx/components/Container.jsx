@@ -8,7 +8,7 @@ define([
     var Container = React.createClass({
         render: function() {
             return (
-                <div>
+                <div className="container">
                     {this.props.content}
                 </div>
             );

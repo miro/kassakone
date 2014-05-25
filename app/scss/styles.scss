@@ -1,4 +1,120 @@
-body {
-    font-family: arial, sans-serif;
-    font-size: 18px;
+@import "reset.scss";
+
+* {
+    // Font styles needed here due to Chrome setting weird defaults without these 
+    font-family: "Helvetica Neue", arial, sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+
+    box-sizing: border-box;
 }
+
+html {
+}
+
+body {
+    font-family: "Helvetica Neue", arial, sans-serif;
+    font-size: 15px;
+}
+
+
+#root {
+    width: 100%;
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.chrome {
+}
+
+.button {
+    padding: 1em;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #FF696E;
+    border: 0;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+
+    cursor: pointer;
+
+    transition: background-color 0.1s;
+
+    &:hover {
+        background: #FFAFAC;
+    }
+
+}
+.small-button {
+    @extend .button;
+    font-size: 0.7em;  
+    font-weight: 200;  
+}
+
+.input {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 1);
+    text-align: center;
+    &:focus {
+        border: 1px solid rgba(255, 105, 110, 0.5);
+        box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2);
+    }
+}
+
+input:focus, button:focus {
+    outline: 0;
+}
+
+.navigation-bar {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    text-align: center;
+    border-bottom: 2px solid #eee;
+
+    .links {
+        a {
+            @extend .small-button;
+            display: inline-block;
+            margin: 0 0.2em;
+        }
+    }
+}
+
+h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+    color: #FF696E;
+}
+
+.center {
+    text-align: center;
+}
+
+.login-wrap {
+
+    .logo-wrap {
+        img {
+            max-width: 150px;
+            width: 100%;
+            margin: 1em;
+        }
+    }
+
+    form {
+        margin: 2em 0;
+        @extend .center;
+
+        .input {
+            margin-bottom: 1em;
+        }
+    }
+
+}
+
