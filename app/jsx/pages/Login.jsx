@@ -53,6 +53,10 @@ define([
             event.preventDefault();
             var nextState = {};
             nextState[field] = event.target.value;
+
+            // quick fix to clear the notification area when a field is modified after error 
+            nextState.notificationText = "";
+
             this.setState(nextState);
         },
 
