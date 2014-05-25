@@ -14,7 +14,7 @@ define([
         },
 
         url: function() {
-            return config.baseUrl + '/Event/' + (!_.isUndefined(this.id) ? this.id : '');
+            return config.baseUrl + 'Event/' + (!_.isUndefined(this.id) ? this.id : '');
         }
     });
     
