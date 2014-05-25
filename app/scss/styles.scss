@@ -60,7 +60,6 @@ body {
     width: 100%;
     padding: 0.75em;
     border: 1px solid #ccc;
-    border-radius: 5px;
     background: rgba(255, 255, 255, 1);
     text-align: center;
     &:focus {
@@ -186,7 +185,6 @@ h3 {
     margin-top: 1em;
     padding: 1em;
     opacity: 0;
-    border-radius: 5px;
     background-color: $red-light;
     transition: opacity 0.5s;
 
