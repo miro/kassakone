@@ -12,20 +12,34 @@ define([
 
     // http://clozeit.wordpress.com/2014/01/13/bootstrap-forms-using-react-js/
     var Login = React.createClass({
-        
+        getInitialState: function getInitialState() {
+            return {
+                notificationText: null
+            }
+        },
+
         handleLogin: function(event) {
-            credentials.loginAsync(this.state.user, this.state.password)
-            .then(function() {
+            function onSuccess() {
                 console.log("Login OK!");
                 app.router.jumpTo('');
-            })
-            .fail(function(jqXHR, textStatus, errorThrown) {
+            }
+
+            function onFailure(jqXHR, textStatus, errorThrown) {
                 if (jqXHR.status === 0) {
-                    alert("API is down");
+                    this.setState({
+                        notificationText: "API is down. Try again later."
+                    });
                 } else {
-                    alert("Wrong User/PW");
+                    this.setState({
+                        notificationText: "Wrong username or password."
+                    });
                 }
-            });
+            }
+
+            credentials
+                .loginAsync(this.state.user, this.state.password)
+                .then(onSuccess.bind(this))
+                .fail(onFailure.bind(this));
         },
 
         handleChange: function(field, e) {
@@ -37,6 +51,8 @@ define([
 
 
         render: function() {
+            var showNotificationArea = this.state.notificationText ? 'show' : '';
+            var notificationAreaClasses = "notification-area " + showNotificationArea;
 
             return (
                 <div className="login-wrap">
@@ -44,7 +60,9 @@ define([
                         <img src="/images/kassakone.jpg" />
                         <h1>Kassakone</h1>
                     </div>
-
+                    <div className={notificationAreaClasses}>
+                        <span className="notification-text">{this.state.notificationText}</span>
+                    </div>
                     <form onSubmit={this.handleLogin}>
                         <input className="input" placeholder="Username" onChange={this.handleChange.bind(this, 'user')} />
                         <input className="input" type="password" placeholder="Password" onChange={this.handleChange.bind(this, 'password')}/>

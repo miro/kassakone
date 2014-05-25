@@ -8,7 +8,7 @@ define([
     'components/Chrome',
     'pages/Listing',
     'pages/Search',
-    'pages/Event',
+    'pages/Events',
     'pages/Login',
     'models/Event'
     
@@ -20,7 +20,7 @@ define([
     Chrome,
     ListingPage,
     SearchPage,
-    EventPage,
+    EventsPage,
     LoginPage,
     EventModel
 ) {
@@ -105,7 +105,7 @@ define([
                 app.data.eventOccurrences.fetch();
 
                 this.chrome.setProps({
-                    content: <EventPage 
+                    content: <EventsPage 
                         eventId={id} 
                         model={eventModel}
                         occurrences={app.data.eventOccurrences} />

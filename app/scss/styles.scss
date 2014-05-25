@@ -1,5 +1,8 @@
 @import "reset.scss";
 
+$red: #FF696E;
+$red-light: #FFAFAC;
+
 * {
     // Font styles needed here due to Chrome setting weird defaults without these 
     font-family: "Helvetica Neue", arial, sans-serif;
@@ -33,7 +36,7 @@ body {
     color: #fff;
     text-transform: uppercase;
     text-decoration: none;
-    background-color: #FF696E;
+    background-color: $red;
     border: 0;
     font-weight: 100;
     letter-spacing: 0.1em;
@@ -43,7 +46,7 @@ body {
     transition: background-color 0.1s;
 
     &:hover {
-        background: #FFAFAC;
+        background: $red-light;
     }
 
 }
@@ -90,7 +93,23 @@ h1 {
     text-transform: uppercase;
     font-weight: 100;
     letter-spacing: 0.05em;
-    color: #FF696E;
+    color: $red;
+}
+
+h2 {
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+    color: $red;
+}
+
+h3 {
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: $red;
 }
 
 .center {
@@ -108,7 +127,7 @@ h1 {
     }
 
     form {
-        margin: 2em 0;
+        margin: 1em 0;
         @extend .center;
 
         .input {
@@ -118,3 +137,28 @@ h1 {
 
 }
 
+.event {
+    .meta {
+        float: left;
+        max-width: 80%;
+    }
+}
+
+.notification-area {
+    margin-top: 1em;
+    padding: 1em;
+    opacity: 0;
+    border-radius: 5px;
+    background-color: $red-light;
+    transition: opacity 0.5s;
+
+    box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2);
+
+    .notification-text {
+        font-weight: 100;
+    }
+}
+
+.show {
+    opacity: 1;
+}
