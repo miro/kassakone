@@ -92,14 +92,6 @@ define([
             }
         },
 
-        search: function() {
-            if (this.checkCredentials()) {
-                this.chrome.setProps({
-                    content: <SearchPage />
-                });
-            }
-        },
-
         event: function(id) {
             if (this.checkCredentials()) {
                 
