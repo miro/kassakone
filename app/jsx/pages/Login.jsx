@@ -17,7 +17,7 @@ define([
             credentials.loginAsync(this.state.user, this.state.password)
             .then(function() {
                 console.log("Login OK!");
-                app.navigate('listing');
+                app.router.jumpTo('');
             })
             .fail(function(jqXHR, textStatus, errorThrown) {
                 if (jqXHR.status === 0) {
