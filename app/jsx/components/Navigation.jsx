@@ -12,7 +12,7 @@ define([
             return (
                 <div className="navigation-bar">
                     <div className="links">
-                        <a href="#">Events</a>
+                        <a href="#">My Events</a>
                         <a href="#logout">Logout</a>
                     </div>
                 </div>
