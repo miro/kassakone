@@ -13,21 +13,18 @@ define([
 ) {
     var Chrome = React.createClass({
         render: function() {
+            var navigation;
 
             if (credentials.authenticated()) {
-                return (
-                    <div className="chrome">
-                        <Navigation />
-                        <Container content={this.props.content} />
-                    </div>
-                )
-            }
-            else {
-                return <div>
-                    <Container content={this.props.content} />
-                </div>
+                navigation = <Navigation />;
             }
             
+            return (
+                <div className="chrome">
+                    {navigation}
+                    <Container content={this.props.content} />
+                </div>
+            )
         }
     });
     

@@ -29,7 +29,7 @@ define([
         },
 
         handleChange: function(field, e) {
-            e.preventDefault(); // handles enter key
+            //e.preventDefault(); // handles enter key
             var nextState = {};
             nextState[field] = e.target.value;
             this.setState(nextState);

@@ -12,9 +12,7 @@ define([
             return (
                 <div className="navigation-bar">
                     <div className="links">
-                        <a href="#search">Search</a>
-                        <a href="#">Home</a>
-                        <a href="#something">Something</a>
+                        <a href="#">Events</a>
                         <a href="#logout">Logout</a>
                     </div>
                 </div>
