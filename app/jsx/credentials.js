@@ -13,19 +13,14 @@ define([
 
         _initialize: function () {
             var credentials = this;
-            // // Set username and token as a part of every ajax request
-            // $.ajaxPrefilter( function( options ) {
-            //     if (config.endpoint.urlRequiresCredentials(options.url) && credentials.authenticated()) {
-            //         var credentialsString =
-            //             'username=' + (localStorage["username"] || '') +
-            //             '&token=' + (localStorage["token"] || '');
-            //         if (options.url.indexOf('?') === -1) {
-            //             options.url += '?' + credentialsString;
-            //         } else {
-            //             options.url += '&' + credentialsString;
-            //         }
-            //     }
-            // });
+            // Set username and token as a part of every ajax request
+            $.ajaxPrefilter( function(options) {
+                if (credentials.authenticated()) {
+                    options.beforeSend = function (xhr) { 
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + credentials.getToken());
+                    }
+                }
+            });
 
         },
 
@@ -44,6 +39,10 @@ define([
                 username: localStorage["username"],
                 token: localStorage["token"]
             };
+        },
+
+        getToken: function() {
+            return localStorage['token'];
         },
 
         authenticated: function () {
