@@ -11,7 +11,7 @@ define([
     App,
     rbbMixin
 ) {
-    var Listing = React.createClass({
+    var EventsListPage = React.createClass({
         
         mixins: [rbbMixin],
         updateOnProps: { events: 'collection'},
@@ -35,5 +35,5 @@ define([
             );
         }
     });
-    return Listing;
+    return EventsListPage;
 });

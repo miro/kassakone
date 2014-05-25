@@ -6,9 +6,9 @@ define([
     'app',
     'credentials',
     'components/Chrome',
-    'pages/Listing',
+    'pages/EventsList',
     'pages/Search',
-    'pages/Events',
+    'pages/Event',
     'pages/Login',
     'pages/Reservation',
     'models/Event',
@@ -20,9 +20,9 @@ define([
     app,
     credentials,
     Chrome,
-    ListingPage,
+    EventsListPage,
     SearchPage,
-    EventsPage,
+    EventPage,
     LoginPage,
     ReservationPage,
     EventModel,
@@ -84,7 +84,7 @@ define([
         events: function() {
             if (this.checkCredentials()) {
                 app.data.events.fetch();
-                var listing = <ListingPage events={app.data.events} />;
+                var listing = <EventsListPage events={app.data.events} />;
 
                 this.chrome.setProps({
                     content: listing
@@ -110,7 +110,7 @@ define([
                 app.data.eventOccurrences.fetch();
 
                 this.chrome.setProps({
-                    content: <EventsPage 
+                    content: <EventPage 
                         eventId={id} 
                         model={eventModel}
                         occurrences={app.data.eventOccurrences} />
