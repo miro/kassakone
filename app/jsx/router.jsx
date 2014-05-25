@@ -121,13 +121,16 @@ define([
         reservation: function(id) {
             if (this.checkCredentials()) {
                 var reservationModel = new ReservationModel({id: id});
-                reservationModel.fetch();
+                
+                function updateWhenLoaded() {
+                    this.chrome.setProps({
+                        content: <ReservationPage 
+                            reservationId={id} 
+                            model={reservationModel} />
+                    });
+                }
 
-                this.chrome.setProps({
-                    content: <ReservationPage 
-                        reservationId={id} 
-                        model={reservationModel} />
-                });
+                reservationModel.fetch().then(updateWhenLoaded.bind(this));
             }
         }
     });
