@@ -32,6 +32,17 @@ define([
         getInitialState: function() {
             return {};
         },
+
+        duration: function() {
+            var occurrence = this.props.occurrences.models[0];
+            if (!_.isUndefined(occurrence)) {
+                var startMoment = moment(occurrence.get('startTime'));
+                var endMoment = moment(occurrence.get('endTime'));
+                return moment.utc(endMoment.diff(startMoment)).format('HH:mm');
+            } else {
+                return undefined;
+            }
+        },
         
         render: function() {
             // TODO onko tätä järkeä tehä renderissä vai rendataanko tämä aina vaan kerran??
@@ -49,6 +60,9 @@ define([
                     </h2>
                     <p className="description">
                         {this.props.model.get('description')}
+                    </p>
+                    <p className="duration">
+                        Duration: {this.duration()}
                     </p>
 
                     <hr />

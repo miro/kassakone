@@ -19,13 +19,17 @@ define([
 
             return <div className="occurrence-component clearfix">
                 <div className="info">
-                    <div className="date">
-                        <span className="date">{moment(this.props.model.get('date')).format('DD.MM.YY HH:mm')}</span>
-                    </div>
-                    <div className="status">
+                    <p>
+                        <span className="date">{moment(this.props.model.get('startTime')).format('DD.MM.YY HH:mm')} </span>
+                        <span className="price">{this.props.model.get('price')} &euro;</span>
+                    </p>
+                    
+
+                    <p className="status">
                         Tickets reserved {this.props.model.get('reservedPlaces')} + {this.props.model.get('totalPlaces')} / {this.props.model.get('soldPlaces')}
-                    </div>
+                    </p>
                 </div>
+
                 <div className="buttons">
                     <a href={href} className="small-button">Info</a>
                 </div>
