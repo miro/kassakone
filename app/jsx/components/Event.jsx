@@ -8,6 +8,7 @@ define([
     var Event = React.createClass({
         render: function() {
             var href = "/#event/" + this.props.model.get('id');
+            
             return (
                 <div className="event">
                     <h3 className="name">
