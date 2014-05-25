@@ -2,6 +2,7 @@
 
 $red: #FF696E;
 $red-light: #FFAFAC;
+$gray-light: #E2E3D9;
 
 * {
     // Font styles needed here due to Chrome setting weird defaults without these 
@@ -28,8 +29,7 @@ body {
     padding: 0 1em;
 }
 
-.chrome {
-}
+
 
 .button {
     padding: 1em;
@@ -116,6 +116,10 @@ h3 {
     text-align: center;
 }
 
+
+
+// #### PAGES ##############################
+// Login page ------------------------------
 .login-wrap {
 
     .logo-wrap {
@@ -137,6 +141,7 @@ h3 {
 
 }
 
+// Event page --------------------------------
 .event {
     .meta {
         float: left;
@@ -146,6 +151,27 @@ h3 {
     }
 }
 
+
+
+// #### COMPONENTS ##############################
+// Event page --------------------------------
+.occurrence-component {
+    margin: 2em 1em;
+    padding: 2em 1em;
+    
+    background-color: $gray-light;
+
+    .info {
+        float: left;
+
+        .date {
+            font-weight: bold;
+        }
+    }
+}
+
+
+// Notification box -----------------------------
 .notification-area {
     margin-top: 1em;
     padding: 1em;
@@ -171,10 +197,21 @@ h3 {
 }
 
 
-.occurrence {
-    .start-time {
-        background: $red-light;
-    }
+
+
+
+/*
+    CLEARFIX HACK
+    (http://nicolasgallagher.com/micro-clearfix-hack/)
+*/
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
 }
 
+.clearfix:after {
+    clear: both;
+}
 
