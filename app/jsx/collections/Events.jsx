@@ -1,15 +1,17 @@
 define([
     'underscore',
     'backbone',
-    'models/Event'
+    'models/Event',
+    'config'
 ], function (
     _,
     Backbone,
-    Event
+    Event,
+    config
 ) {
 
     return Backbone.Collection.extend({
-        url: '/api/mock/events.json',
+        url: config.baseUrl + '/Event',
         model: Event
     });
     
