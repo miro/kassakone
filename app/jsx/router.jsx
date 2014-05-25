@@ -6,11 +6,11 @@ define([
     'app',
     'credentials',
     'components/Chrome',
-    'pages/EventsList',
-    'pages/Search',
-    'pages/Event',
-    'pages/Login',
-    'pages/Reservation',
+    'pages/EventsListPage',
+    'pages/SearchPage',
+    'pages/EventPage',
+    'pages/LoginPage',
+    'pages/ReservationPage',
     'models/Event',
     'models/Reservation'
     
