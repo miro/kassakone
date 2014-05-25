@@ -34,6 +34,7 @@ define([
             "events": "events",
             "search": "search",
             "login": "login",
+            "logout": "logout",
             "event/:id": "events"
         },
 
@@ -69,6 +70,11 @@ define([
             this.chrome.setProps({
                 content: <LoginPage />
             });
+        },
+
+        logout: function() {
+            credentials.logout();
+            this.jumpTo('login');
         },
 
         events: function() {
