@@ -29,6 +29,7 @@ define([
         },
 
         handleChange: function(field, e) {
+            e.preventDefault(); // handles enter key
             var nextState = {};
             nextState[field] = e.target.value;
             this.setState(nextState);
@@ -38,13 +39,17 @@ define([
         render: function() {
 
             return (
-                <div className={"login-wrap"}>
-                    <h3>Login</h3>
+                <div className="login-wrap">
+                    <div className="logo-wrap center">
+                        <img src="/images/kassakone.jpg" />
+                        <h1>Kassakone</h1>
+                    </div>
 
-                    <input id="user" type="text" placeholder="Username" onChange={this.handleChange.bind(this, 'user')} />
-                    <input id="password" placeholder="Password" type="password" onChange={this.handleChange.bind(this, 'password')}/>
-
-                    <button onClick={this.handleLogin} type="#">Login</button>
+                    <form onSubmit={this.handleLogin}>
+                        <input className="input" placeholder="Username" onChange={this.handleChange.bind(this, 'user')} />
+                        <input className="input" type="password" placeholder="Password" onChange={this.handleChange.bind(this, 'password')}/>
+                        <button className="button">Log in</button>
+                    </form>
                 </div>
             );
         }

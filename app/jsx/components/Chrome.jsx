@@ -15,10 +15,12 @@ define([
         render: function() {
 
             if (credentials.authenticated()) {
-                return <div>
-                    <Navigation />
-                    <Container content={this.props.content} />
-                </div>
+                return (
+                    <div className="chrome">
+                        <Navigation />
+                        <Container content={this.props.content} />
+                    </div>
+                )
             }
             else {
                 return <div>

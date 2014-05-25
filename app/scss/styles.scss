@@ -1,4 +1,90 @@
-body {
-    font-family: arial, sans-serif;
-    font-size: 18px;
+@import "reset.scss";
+
+* {
+    box-sizing: border-box;
+    font-size: 1em;
+    font-weight: 100;
 }
+
+html {
+}
+
+body {
+    font-family: "Helvetica Neue", arial, sans-serif;
+    font-size: 15px;
+}
+
+
+#root {
+    width: 100%;
+    max-width: 768px;
+    margin: 1em auto;
+    padding: 1em;
+}
+
+.chrome {
+}
+
+.button {
+    padding: 0.75em;
+    margin: 0 0.25em;
+    color: #fff;
+    background: #FF907B;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 0;
+    font-weight: 200;
+}
+
+.input {
+    width: 100%;
+    padding: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 1);
+}
+
+.navigation-bar {
+    padding: 1em;
+    text-align: center;
+
+    .links {
+        a {
+            @extend .button;
+            display: inline-block;
+        }
+    }
+}
+
+h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0.05em;
+}
+
+.center {
+    text-align: center;
+}
+
+.login-wrap {
+
+    .logo-wrap {
+        img {
+            max-width: 150px;
+            width: 100%;
+            margin: 1em;
+        }
+    }
+
+    form {
+        margin: 2em 0;
+        @extend .center;
+
+        .input {
+            margin-bottom: 1em;
+        }
+    }
+
+}
+
