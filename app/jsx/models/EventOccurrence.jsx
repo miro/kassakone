@@ -6,6 +6,12 @@ define([
     Backbone
 ) {
 
-    return Backbone.Model;
+    return Backbone.Model.extend({
+    	defaults: {
+    		'reservedPlaces': '?',
+    		'totalPlaces': '?',
+    		'soldPlaces': '?'
+    	}
+    })
 
 });

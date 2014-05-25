@@ -2,10 +2,12 @@
 
 define([
     'react',
-    'react-backbone'
+    'react-backbone',
+    'moment'
 ], function(
     React,
-    rbbMixin
+    rbbMixin,
+    moment
 ) {
     var EventOccurrence = React.createClass({
 
@@ -13,18 +15,19 @@ define([
         updateOnProps: { 'model': 'model' },
 
         render: function() {
-            var href = "/#event/occurrence" + this.props.model.get('id');
+            var href = "/#event/occurrence/" + this.props.model.get('id');
 
-            return <div className="occurrence">
-                <div className="date">
-                    <span className="date">{this.props.model.get('date')}</span>
-                    <span className="start-time">{this.props.model.get('startTime')}</span>
-                </div>
-                <div className="status">
-                    {this.props.model.get('reservedPlaces')} + {this.props.model.get('totalPlaces')} / {this.props.model.get('soldPlaces')}
+            return <div className="occurrence-component clearfix">
+                <div className="info">
+                    <div className="date">
+                        <span className="date">{moment(this.props.model.get('date')).format('DD.MM.YY HH:mm')}</span>
+                    </div>
+                    <div className="status">
+                        Tickets reserved {this.props.model.get('reservedPlaces')} + {this.props.model.get('totalPlaces')} / {this.props.model.get('soldPlaces')}
+                    </div>
                 </div>
                 <div className="buttons">
-                    <a href={href} className="small-button">Details</a>
+                    <a href={href} className="small-button">Info</a>
                 </div>
             </div>
 

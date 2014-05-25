@@ -44,13 +44,16 @@ define([
 
             return (
                 <div className="event">
-                    <h3 className="name">
+                    <h2 className="name">
                         {this.props.model.get('name')}
-                    </h3>
+                    </h2>
                     <p className="description">
                         {this.props.model.get('description')}
                     </p>
-    
+
+                    <hr />
+
+                    <h3>Occurrences</h3>
                     <div className="occurrences">
                         {occurrenceComponents}
                     </div>
