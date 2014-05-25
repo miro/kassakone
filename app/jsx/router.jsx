@@ -29,13 +29,14 @@ define([
 
         chrome: undefined, // the root component
         
+        // The actual routes
         routes: {
             "(/)": "events",
             "events": "events",
             "search": "search",
             "login": "login",
             "logout": "logout",
-            "event/:id": "events"
+            "event/:id": "event"
         },
 
         initialize: function() {
