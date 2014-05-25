@@ -13,7 +13,9 @@ define([
             name: 'tempname'
         },
 
-        url: config.baseUrl + '/Event/' + (!_.isUndefined(this.id) ? this.id : '')
+        url: function() {
+            return config.baseUrl + '/Event/' + (!_.isUndefined(this.id) ? this.id : '');
+        }
     });
     
 });
