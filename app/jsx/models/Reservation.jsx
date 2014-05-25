@@ -1,9 +1,11 @@
 define([
     'underscore',
-    'backbone'
+    'backbone',
+    'config'
 ], function (
     _,
-    Backbone
+    Backbone,
+    config
 ) {
 
     return Backbone.Model.extend({
@@ -12,6 +14,10 @@ define([
             'EventOccurancesID': null,
             'Name': null,
             'Amount': null
+        },
+
+        url: function() {
+            return config.baseUrl + '/Reservation/' + (!_.isUndefined(this.id) ? this.id : '');
         }
     });
 

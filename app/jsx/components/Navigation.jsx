@@ -11,7 +11,11 @@ define([
         render: function() {
             return (
                 <div>
-                    <a href="#search">Search</a> | <a href="#">Home</a> | <a href="#events">Events</a> | <a href="#logout">Logout</a>
+                    <a href="#search">Search</a> | 
+                    <a href="#">Home</a> |
+                    <a href="#events">Events</a> |
+                    <a href="#reservation/1">Reservation</a> |
+                    <a href="#logout">Logout</a>
                 </div>
             );
         }
