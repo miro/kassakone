@@ -99,7 +99,7 @@ h1 {
 h2 {
     font-size: 2em;
     text-transform: uppercase;
-    font-weight: 100;
+    font-weight: 200;
     letter-spacing: 0.05em;
     color: $red;
 }
@@ -140,7 +140,9 @@ h3 {
 .event {
     .meta {
         float: left;
-        max-width: 80%;
+    }
+    .buttons {
+        float: right;
     }
 }
 
@@ -157,6 +159,10 @@ h3 {
     .notification-text {
         font-weight: 100;
     }
+}
+
+.hide {
+    opacity: 0;
 }
 
 .show {
