@@ -3,20 +3,29 @@
 define([
     'react',
     'components/Navigation',
-    'components/Container'
+    'components/Container',
+    'credentials'
 ], function(
     React,
     Navigation,
-    Container
+    Container,
+    credentials
 ) {
     var Chrome = React.createClass({
         render: function() {
-            return (
-                <div>
+
+            if (credentials.authenticated()) {
+                return <div>
                     <Navigation />
                     <Container content={this.props.content} />
                 </div>
-            );
+            }
+            else {
+                return <div>
+                    <Container content={this.props.content} />
+                </div>
+            }
+            
         }
     });
     
