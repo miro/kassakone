@@ -7,7 +7,7 @@ define([
     'app',
     'jquery',
     'models/Event',
-    'components/Occurrence',
+    'components/EventOccurrence',
     'react-backbone'
 ], function(
     _,

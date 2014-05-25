@@ -6,17 +6,19 @@ define([
     Backbone
 ) {
 
-    return Backbone.Model.extend({
+    var EventOccurrence = Backbone.Model.extend({
         defaults: {
-            'ID': null,
-            'EventId': null,
-            'Date': null,
-            'StartTime': null,
-            'EndTime': null,
-            'TotalPlaces': null,
-            'ReservedPlaces': null,
-            'SoldPlaces': null
+            'id': null,
+            'eventId': null,
+            'date': null,
+            'startTime': null,
+            'endTime': null,
+            'totalPlaces': null,
+            'reservedPlaces': null,
+            'soldPlaces': null
         }
     });
+
+    return EventOccurrence;
 
 });

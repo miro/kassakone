@@ -94,19 +94,26 @@ define([
 
         event: function(id) {
             if (this.checkCredentials()) {
-                
                 var eventModel = new EventModel({id: id});
-                eventModel.fetch();
 
-                app.data.eventOccurrences.meta('eventId', id);
-                app.data.eventOccurrences.fetch();
+                function updateWhenLoaded() {
+                    this.chrome.setProps({
+                        content: <EventPage 
+                            eventId={id} 
+                            model={eventModel}
+                            occurrences={app.data.eventOccurrences} />
+                    }); 
+                }
 
-                this.chrome.setProps({
-                    content: <EventPage 
-                        eventId={id} 
-                        model={eventModel}
-                        occurrences={app.data.eventOccurrences} />
-                });
+                function loadOccurrences() {
+                    app.data.eventOccurrences.meta('eventId', id);
+                    return app.data.eventOccurrences.fetch();
+                }
+
+                eventModel
+                    .fetch()
+                    .then(loadOccurrences)
+                    .then(updateWhenLoaded.bind(this));
             }
         },
 
