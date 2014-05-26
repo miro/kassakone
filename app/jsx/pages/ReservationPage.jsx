@@ -36,16 +36,19 @@ define([
         },
         
         render: function() {
+            var reservationStatus;
+            if (this.props.model.get('expired')) {
+                reservationStatus = 'Reservation expired';
+            } else {
+                reservationStatus = 'Reservation expires ' + moment(this.props.model.get('keke')).format('DD.MM.YY HH:mm');
+            }
 
             return <div className={"reservation"}>
                 <h3 className={"id"}>
-                    ID:  {this.props.model.get('id')}
+                    Reservation ID: {this.props.model.get('id')}
                 </h3>
                 <p className={"expired"}>
-                    {!this.props.model.get('expired') ? 
-                        'Reservation expired' : 
-                        'Reservation expires dd.mm.yyyy'
-                    }
+                    {reservationStatus}
                 </p>
                 <p className={"redeemed"}>
                     {this.props.model.get('redeemed') ? 
