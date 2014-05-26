@@ -1,1 +1,1 @@
-web: grunt react && grunt sass && node server.js
+web: node node_modules/grunt/lib/grunt.js react && node node_modules/grunt/lib/grunt.js sass && node server.js
