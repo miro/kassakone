@@ -17,6 +17,7 @@ define([
     // Collections
     application.data.events = new Events();
     application.data.eventOccurrences = new EventOccurrences();
+    application.data.reservations = new Reservations();
 
     return application;
 });
