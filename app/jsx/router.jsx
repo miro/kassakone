@@ -12,8 +12,9 @@ define([
     'pages/LoginPage',
     'pages/ReservationPage',
     'models/Event',
-    'models/Reservation'
-    
+    'models/Reservation',
+    'collections/OccurrenceReservations', // These are disposable. Not meant for storing.
+    'pages/EventOccurrencePage'
 ], function(
     Backbone,
     React,
@@ -26,7 +27,9 @@ define([
     LoginPage,
     ReservationPage,
     EventModel,
-    ReservationModel
+    ReservationModel,
+    OccurrenceReservations,
+    EventOccurrencePage
 ) {
 
     return Backbone.Router.extend({
@@ -41,7 +44,8 @@ define([
             "login": "login",
             "logout": "logout",
             "event/:id": "event",
-            "reservation/:id": "reservation"
+            "reservation/:id": "reservation",
+            "uli": "uli"
         },
 
         initialize: function() {
@@ -140,15 +144,42 @@ define([
         // jumpToReservation (bad function name, we need something more describing)
         // used to show the reservation page when the model is already fetched. This happens
         // when searching for reservation
-        jumpToReservation: function(model) {
+        jumpToReservation: function(reservationModel) {
             if (this.checkCredentials()) {
-                window.history.pushState("", "", "/#reservation/" + model.id);
+                window.history.pushState("", "", "/#reservation/" + reservationModel.id);
                 Backbone.history.checkUrl();
                 this.chrome.setProps({
                     content: <ReservationPage 
-                        reservationId={model.id} 
-                        model={model} />
+                        reservationId={reservationModel.id} 
+                        model={reservationModel} />
                 });
+            }
+        },
+
+        jumpToOccurrence: function(occurrenceModel) {
+            if (this.checkCredentials()) {
+                window.history.pushState("", "", "/#occurrence/" + occurrenceModel.id);
+                Backbone.history.checkUrl();
+
+                var occurrenceReservations = new OccurrenceReservations({
+                    occurrenceId: occurrenceModel.get('id')
+                });
+
+                function onOccurrenceDataLoaded() {
+                    this.chrome.setProps({
+                        content: <EventOccurrencePage 
+                            occurrence={occurrenceModel} 
+                            reservations={occurrenceReservations} />
+                    });
+                }
+
+                function onFailure() {
+                    console.log("Failed to load data from url ", "/#occurrence/" + occurrenceModel.id);
+                }
+
+                occurrenceReservations.fetch()
+                    .then(onOccurrenceDataLoaded.bind(this))
+                    .fail(onFailure.bind(this));
             }
         },
 
@@ -157,6 +188,12 @@ define([
                 this.chrome.setProps({
                     content: <SearchPage />
                 });
+            }
+        },
+
+        uli: function uli() {
+            if (this.checkCredentials()) {
+                window.reservations = new OccurrenceReservations();
             }
         }
     });

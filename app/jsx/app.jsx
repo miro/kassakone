@@ -18,6 +18,5 @@ define([
     application.data.events = new Events();
     application.data.eventOccurrences = new EventOccurrences();
 
-
     return application;
 });

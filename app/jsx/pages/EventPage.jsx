@@ -16,7 +16,7 @@ define([
     App,
     $,
     EventModel,
-    OccurrenceComponent,
+    EventOccurrence,
     rbbMixin
 ) {
 
@@ -47,10 +47,10 @@ define([
         render: function() {
             // TODO onko tätä järkeä tehä renderissä vai rendataanko tämä aina vaan kerran??
             var occurrenceModels = this.props.occurrences.models;
-            var occurrenceComponents = []; 
+            var eventOccurrenceComponents = []; 
 
             _.each(occurrenceModels, function(model) {
-                occurrenceComponents.push(<OccurrenceComponent model={model} key={model.id} />);
+                eventOccurrenceComponents.push(<EventOccurrence model={model} key={model.id} />);
             });
 
             return (
@@ -69,7 +69,7 @@ define([
 
                     <h3>Occurrences</h3>
                     <div className="occurrences">
-                        {occurrenceComponents}
+                        {eventOccurrenceComponents}
                     </div>
                 </div>
             )

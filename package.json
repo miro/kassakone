@@ -8,7 +8,7 @@
     "contributors": [
         "Jukka Tupamäki <tupamaki@gmail.com>"
     ],
-    "devDependencies": {
+    "dependencies": {
         "mocha": "^1.18.2",
         "express": "^4.0.0",
         "morgan": "^1.0.0",
