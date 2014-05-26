@@ -40,9 +40,9 @@ app.get('/api/mock/:filename', function(req, res) {
 });
 
 // Launch server
-var port = 3000;
+var port = process.env.PORT || 3000;
 var server = app.listen(port, function() {
-	console.log("Server running :: http://localhost:" + port);
+	console.log("Server running in port: " + port);
 });
 
 exports.server = server;
