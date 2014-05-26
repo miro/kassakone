@@ -44,8 +44,7 @@ define([
             "login": "login",
             "logout": "logout",
             "event/:id": "event",
-            "reservation/:id": "reservation",
-            "uli": "uli"
+            "reservation/:id": "reservation"
         },
 
         initialize: function() {
@@ -188,12 +187,6 @@ define([
                 this.chrome.setProps({
                     content: <SearchPage />
                 });
-            }
-        },
-
-        uli: function uli() {
-            if (this.checkCredentials()) {
-                window.reservations = new OccurrenceReservations();
             }
         }
     });
