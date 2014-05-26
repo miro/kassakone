@@ -11,10 +11,10 @@ define([
     'pages/EventPage',
     'pages/LoginPage',
     'pages/ReservationPage',
+    'pages/EventOccurrencePage',
     'models/Event',
     'models/Reservation',
-    'collections/OccurrenceReservations', // These are disposable. Not meant for storing.
-    'pages/EventOccurrencePage'
+    'models/EventOccurrence'
 ], function(
     Backbone,
     React,
@@ -26,10 +26,10 @@ define([
     EventPage,
     LoginPage,
     ReservationPage,
+    EventOccurrencePage,
     EventModel,
     ReservationModel,
-    OccurrenceReservations,
-    EventOccurrencePage
+    EventOccurrenceModel
 ) {
 
     return Backbone.Router.extend({
@@ -44,7 +44,8 @@ define([
             "login": "login",
             "logout": "logout",
             "event/:id": "event",
-            "reservation/:id": "reservation"
+            "event/:eventId/occurrence/:occurrenceId": "occurrence",
+            "reservation/:id": "reservation" 
         },
 
         initialize: function() {
@@ -155,30 +156,39 @@ define([
             }
         },
 
+        occurrence: function(eventId, occurrenceId) {
+            if (this.checkCredentials()) {
+
+                var occurrenceModel = new EventOccurrenceModel({id: occurrenceId, eventId: eventId});
+                occurrenceModel.fetch();
+
+                app.data.reservations.reset([]);
+                app.data.reservations.occurrenceId = occurrenceId;
+                app.data.reservations.fetch();
+
+                this.chrome.setProps({
+                    content: <EventOccurrencePage 
+                        occurrence={occurrenceModel} 
+                        reservations={app.data.reservations} />
+                });
+            }
+        },
+
+        // Same thing as with jumpToReservation
         jumpToOccurrence: function(occurrenceModel) {
             if (this.checkCredentials()) {
-                window.history.pushState("", "", "/#occurrence/" + occurrenceModel.id);
+                window.history.pushState("", "", "/#event/" + occurrenceModel.eventId + "/occurrence/" + occurrenceModel.get('id'));
                 Backbone.history.checkUrl();
 
-                var occurrenceReservations = new OccurrenceReservations({
-                    occurrenceId: occurrenceModel.get('id')
+                app.data.reservations.reset([]);
+                app.data.reservations.occurrenceId = occurrenceModel.get('id');
+                app.data.reservations.fetch();
+
+                this.chrome.setProps({
+                    content: <EventOccurrencePage 
+                        occurrence={occurrenceModel} 
+                        reservations={app.data.reservations} />
                 });
-
-                function onOccurrenceDataLoaded() {
-                    this.chrome.setProps({
-                        content: <EventOccurrencePage 
-                            occurrence={occurrenceModel} 
-                            reservations={occurrenceReservations} />
-                    });
-                }
-
-                function onFailure() {
-                    console.log("Failed to load data from url ", "/#occurrence/" + occurrenceModel.id);
-                }
-
-                occurrenceReservations.fetch()
-                    .then(onOccurrenceDataLoaded.bind(this))
-                    .fail(onFailure.bind(this));
             }
         },
 

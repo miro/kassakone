@@ -17,8 +17,6 @@ define([
         updateOnProps: { 'model': 'model' },
 
         render: function() {
-            var href = "/#occurrence/" + this.props.model.get('id');
-
             return (
                 <div className="occurrence-component clearfix">
                     <div className="info">
