@@ -53,11 +53,15 @@ define([
             }
         },
 
-        jumpTo: function(route) { // shortcut for navigate
+        // Helper functions --------------------------------
+
+        // jumpTo - shortcut for navigate
+        jumpTo: function(route) { 
             this.navigate(route, {trigger: true});
             // TODO: change navigation buttons state here?
         },
 
+        // checkCredentials - checks if user is authorized
         checkCredentials: function() {
             if (!credentials.authenticated()) {
                 console.log('Unauthenticated, jump to login');
@@ -131,6 +135,20 @@ define([
                 }
 
                 reservationModel.fetch().then(updateWhenLoaded.bind(this));
+            }
+        },
+        // jumpToReservation (bad function name, we need something more describing)
+        // used to show the reservation page when the model is already fetched. This happens
+        // when searching for reservation
+        jumpToReservation: function(model) {
+            if (this.checkCredentials()) {
+                window.history.pushState("", "", "/#reservation/" + model.id);
+                Backbone.history.checkUrl();
+                this.chrome.setProps({
+                    content: <ReservationPage 
+                        reservationId={model.id} 
+                        model={model} />
+                });
             }
         },
 
