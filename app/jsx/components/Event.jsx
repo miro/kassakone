@@ -20,9 +20,9 @@ define([
                     </p>
                 </div>
 
-                <div className="buttons">
-                    <a href={href} className="small-button">Details</a>
-                </div>
+                <a href={href}>
+                    <button className="small-button">Details</button>
+                </a>
             </div>;
         }
     });
