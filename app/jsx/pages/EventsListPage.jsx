@@ -28,11 +28,9 @@ define([
 
             eventComponents = eventModels.map(toComponent);
 
-            return (
-                <div>
-                    {eventComponents}
-                </div>
-            );
+            return <div className="event-page">
+                {eventComponents}
+            </div>;
         }
     });
     return EventsListPage;
