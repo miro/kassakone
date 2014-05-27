@@ -22,8 +22,8 @@ define([
             var eventComponents;
 
             function toComponent(model) {
-                var event = <Event key={model.cid} model={model} />;
-                return event;
+                var eventComponent = <Event key={model.cid} model={model} />;
+                return eventComponent;
             }
 
             eventComponents = eventModels.map(toComponent);
