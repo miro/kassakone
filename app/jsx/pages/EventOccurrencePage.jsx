@@ -4,18 +4,22 @@ define([
     'underscore',
     'react',
     'moment',
+    'app',
     'react-backbone',
     'config',
     'components/Reservation',
-    'models/Reservation'
+    'models/Reservation',
+    'models/Event'
 ], function(
     _,
     React,
     moment,
+    app,
     rbbMixin,
     config,
     ReservationComponent,
-    ReservationModel
+    ReservationModel,
+    EventModel
 ) {
 
     var EventOccurrencePage = React.createClass({
@@ -24,6 +28,7 @@ define([
 
         updateOnProps: {
             occurrence: 'model',
+            eventModel: 'model',
             reservations: 'collection'
         },
 
@@ -34,6 +39,20 @@ define([
 
         componentWillUnmount: function() {
             this.stopUpdater();
+        },
+
+        getDefaultProps: function() {
+            var self = this;
+            var eventModel = _.find(app.data.events.models, function(e) {
+                return e.get('id') == self.props.occurrence.eventId;
+            });
+
+            if (!eventModel) {
+                eventModel = new EventModel({id: this.props.occurrence.eventId});
+                eventModel.fetch();
+            }
+            
+            return {eventModel: eventModel};
         },
 
         sellTicket: function sellTicket() {
@@ -49,10 +68,12 @@ define([
         },
         
         render: function() {
+
             var reservations = [];
             _.each(this.props.reservations.models, function(reservation) {
                 reservations.push(<ReservationComponent model={reservation} key={reservation.get('id')} />);
             });
+            
 
             // Alter BuyButton based on if the occurrence has already begun
             var buyButton = [];
@@ -66,7 +87,8 @@ define([
 
             return <div className="occurrence-page">
                 <h3 className="title">
-                    {moment(this.props.occurrence.get('startTime')).format('DD.MM.YY HH:mm')}
+                    {this.props.eventModel.get('name')} 
+                    {moment(this.props.occurrence.get('startTime')).format(' DD.MM.YY HH:mm')}
                 </h3>
 
                 <div className="meta clearfix">
