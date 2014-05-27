@@ -9,8 +9,13 @@ define([
 ) {
 
     return Backbone.Model.extend({
+        occurrenceId: null,
+
         url: function() {
-            return config.baseUrl + '/Reservation/' + (!_.isUndefined(this.id) ? this.id : '');
+            var tempUrl = config.baseUrl;
+            tempUrl += !_.isNull(this.occurrenceId) ? '/Occurrence/' + this.occurrenceId : '';
+            tempUrl += '/Reservation/' + (!_.isUndefined(this.id) ? this.id : '');
+            return tempUrl;
         }
     });
 
