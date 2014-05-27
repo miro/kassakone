@@ -122,11 +122,15 @@ p {
 }
 .title {
     display: inline-block;
-    border: 1px solid $red;
     width: 100%;
     text-align: center;
     padding: 1em 0.5em;
     margin: 0.5em 0;
+
+    border-top: 1px solid $red;
+    border-bottom: 1px solid $red;
+    border-left: 10px solid $red;
+    border-right: 10px solid $red;
 }
 
 .center {
@@ -177,9 +181,20 @@ hr {
     .meta {
         margin-bottom: 1em;
 
+
         .info {
             float: left;
             display: block;
+            margin-top: 0.5em;
+
+            p {
+                margin: 0;
+            }
+
+            .status {
+                font-weight: 500;
+            }
+
         }
 
         button#sellticket {
@@ -200,9 +215,10 @@ hr {
 
     .meta {
         width: 100%;
+        margin-bottom: 0.5em;
     }
 
-    .buttons {
+    button {
         float: right;
         margin-top: 1em 0;
     }
@@ -275,8 +291,9 @@ hr {
 .reservation-component {
 
     width: 100%;
-    background-color: $gray-light;
+    border: 1px solid $red;
     margin-bottom: 0.5em;
+    position: relative;
 
     .id {
         float: left;
@@ -288,9 +305,17 @@ hr {
     .status {
         display: inline-block;
         padding: 1em 1em;
+        margin-bottom: -1px;
         height: 100%;
-        float: right;
+        position: absolute;
+        right: 0;
+        
         background-color: $red;
+        color: white;
+
+        font-weight: 100;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
 
         &.redeemed {
             background-color: $red-light;
