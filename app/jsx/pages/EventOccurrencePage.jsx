@@ -3,11 +3,13 @@
 define([
     'underscore',
     'react',
-    'react-backbone'
+    'react-backbone',
+    'components/Reservation'
 ], function(
     _,
     React,
-    rbbMixin
+    rbbMixin,
+    ReservationComponent
 ) {
 
     var EventOccurrencePage = React.createClass({
@@ -18,22 +20,34 @@ define([
             occurrence: 'model',
             reservations: 'collection'
         },
-
-        getInitialState: function() {
-            return {};
-        },
         
         render: function() {
-            var occurrence = this.props.occurrence.toJSON();
-            var reservations = this.props.reservations.toJSON();
+            var reservations = [];
+            _.each(this.props.reservations.models, function(reservation) {
+                reservations.push(<ReservationComponent model={reservation} />);
+            });
 
-            return (
-                <div className="occurrence">
-                    {occurrence}
-                    <br />
+            return <div className="occurrence-page">
+                <h3 className="title">
+                    {moment(this.props.occurrence.get('startTime')).format('DD.MM.YY HH:mm')}
+                </h3>
+
+                <div className="info">
+                    <p className="price">
+                        {this.props.occurrence.get('price')} &euro;
+                    </p>
+                    <p className="status">
+                        Tickets reserved {this.props.occurrence.get('reservedPlaces')} + {this.props.occurrence.get('totalPlaces')} / {this.props.occurrence.get('soldPlaces')}
+                    </p>
+                </div>
+
+
+                <h4 className="title">Reservations</h4>
+
+                <div className="reservations">
                     {reservations}
                 </div>
-            )
+            </div>;
         }
 
     });

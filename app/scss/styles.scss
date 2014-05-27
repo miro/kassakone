@@ -87,29 +87,33 @@ input:focus, button:focus {
     opacity: 1;
 }
 
-
+h1, h2, h3, h4 {
+    letter-spacing: 0.05em;
+    color: $red; 
+}
 h1 {
     font-size: 3em;
     text-transform: uppercase;
     font-weight: 100;
-    letter-spacing: 0.05em;
-    color: $red;
 }
 
 h2 {
     font-size: 2em;
     text-transform: uppercase;
     font-weight: 200;
-    letter-spacing: 0.05em;
-    color: $red;
+    
 }
 
 h3 {
     font-size: 1em;
     text-transform: uppercase;
     font-weight: 400;
-    letter-spacing: 0.05em;
-    color: $red;
+}
+
+h4 {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .title {
@@ -168,6 +172,18 @@ h3 {
     }
 }
 
+// Occurrence-page -----------------------------
+.occurrence-page {
+    .info {
+        width: 100%;
+        margin-bottom: 1em;
+
+        .date {
+            font-weight: bold;
+        }
+    }
+}
+
 
 
 // #### COMPONENTS ##############################
@@ -216,6 +232,33 @@ h3 {
             @extend .small-button;
             display: inline-block;
             margin: 0 0.2em;
+        }
+    }
+}
+
+// Reservation component
+.reservation-component {
+
+    width: 100%;
+    background-color: $gray-light;
+    margin-bottom: 0.5em;
+
+    .id {
+        float: left;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0.5em;
+    }
+
+    .status {
+        display: inline-block;
+        padding: 1em 1em;
+        height: 100%;
+        float: right;
+        background-color: $red;
+
+        & .redeemed {
+            background-color: $red-light;
         }
     }
 }
