@@ -29,9 +29,7 @@ define([
                         </p>
                     </div>
     
-                    <div className="buttons">
-                        <button onClick={this.moveToOccurrencePage} className="small-button">Info</button>
-                    </div>
+                    <button onClick={this.moveToOccurrencePage} className="infobutton small-button">Info</button>
                 </div>
             )
         },

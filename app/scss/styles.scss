@@ -205,16 +205,16 @@ p {
 // Occurrence --------------------------------
 .occurrence-component {
     margin: 0.5em 1em 2em 0em;
-    padding: 1em 1em;
     width: 100%;
-    
-    background-color: $gray-light;
+    position: relative;
+    border: 1px solid $red;
 
     p {
         margin: 0;
     }
 
     .info {
+        padding: 1em 1em;
         float: left;
 
         .date {
@@ -222,8 +222,13 @@ p {
         }
     }
 
-    .buttons {
-        float: right;
+    button.infobutton {
+        position: absolute;
+        margin: 0;
+        right: 0;
+        height: 100%;
+        padding: 1em;
+        display: block;
     }
 }
 
