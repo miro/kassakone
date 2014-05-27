@@ -257,7 +257,7 @@ h4 {
         float: right;
         background-color: $red;
 
-        & .redeemed {
+        &.redeemed {
             background-color: $red-light;
         }
     }
