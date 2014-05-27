@@ -3,23 +3,24 @@
 define([
     'underscore',
     'react',
-    'components/Event',
     'app',
     'jquery',
+    'moment',
     'models/Event',
     'components/EventOccurrence',
+    'components/Event',
     'react-backbone'
 ], function(
     _,
     React,
-    Event,
     App,
     $,
+    moment,
     EventModel,
     EventOccurrence,
+    Event,
     rbbMixin
 ) {
-
     var EventPage = React.createClass({
 
         mixins: [rbbMixin],
