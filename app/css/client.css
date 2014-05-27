@@ -1,0 +1,238 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  font-family: "Helvetica Neue", arial, sans-serif;
+  font-size: 1em;
+  font-weight: 100;
+  box-sizing: border-box; }
+
+
+body {
+  font-family: "Helvetica Neue", arial, sans-serif;
+  font-size: 15px; }
+
+#root {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0 1em; }
+
+.button, .small-button, .navigation-bar .links a, button {
+  padding: 1em;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: #FF696E;
+  border: 0;
+  font-weight: 100;
+  letter-spacing: 0.1em;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.1s; }
+  .button:hover, .small-button:hover, .navigation-bar .links a:hover, button:hover {
+    background: #FFAFAC; }
+  .button.full, .full.small-button, .navigation-bar .links a.full, button.full {
+    width: 100%; }
+
+.small-button, .navigation-bar .links a {
+  font-size: 0.7em;
+  font-weight: 200; }
+
+.input {
+  width: 100%;
+  padding: 0.75em;
+  border: 1px solid #ccc;
+  background: white;
+  text-align: center; }
+  .input:focus {
+    border: 1px solid rgba(255, 105, 110, 0.5);
+    box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2); }
+
+input:focus, button:focus {
+  outline: 0; }
+
+.hide {
+  opacity: 0; }
+
+.show {
+  opacity: 1; }
+
+h1, h2, h3, h4 {
+  letter-spacing: 0.05em;
+  color: #FF696E;
+  margin-bottom: 0.5em; }
+
+h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+  font-weight: 100; }
+
+h2 {
+  font-size: 2em;
+  text-transform: uppercase;
+  font-weight: 200; }
+
+h3 {
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: 400; }
+
+h4 {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  font-weight: 500; }
+
+p {
+  margin-bottom: 0.5em; }
+
+.title {
+  display: inline-block;
+  border: 1px solid #FF696E;
+  width: 100%;
+  text-align: center;
+  padding: 1em 0.5em;
+  margin: 0.5em 0; }
+
+.center, .login-wrap form {
+  text-align: center; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #FF696E;
+  margin: 1em 0;
+  padding: 0; }
+
+.login-wrap .logo-wrap img {
+  max-width: 150px;
+  width: 100%;
+  margin: 1em; }
+.login-wrap form {
+  margin: 1em 0; }
+  .login-wrap form .input {
+    margin-bottom: 1em; }
+
+.search-page input {
+  font-size: 2em;
+  padding: 0.1em; }
+
+.occurrence-page .meta {
+  margin-bottom: 1em; }
+  .occurrence-page .meta .info {
+    float: left;
+    display: block; }
+  .occurrence-page .meta button#sellticket {
+    float: right; }
+
+.event-component {
+  display: block;
+  height: 100%;
+  margin-bottom: 2em; }
+  .event-component .meta {
+    width: 100%; }
+  .event-component .buttons {
+    float: right;
+    margin-top: 1em 0; }
+
+.occurrence-component {
+  margin: 0.5em 1em 2em 0em;
+  width: 100%;
+  position: relative;
+  border: 1px solid #FF696E; }
+  .occurrence-component p {
+    margin: 0; }
+  .occurrence-component .info {
+    padding: 1em 1em;
+    float: left; }
+    .occurrence-component .info .date {
+      font-weight: bold; }
+  .occurrence-component button.infobutton {
+    position: absolute;
+    margin: 0;
+    right: 0;
+    height: 100%;
+    padding: 1em;
+    display: block; }
+
+.notification-area {
+  margin-top: 1em;
+  padding: 1em;
+  opacity: 0;
+  background-color: #FFAFAC;
+  transition: opacity 0.5s;
+  box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2); }
+  .notification-area .notification-text {
+    font-weight: 100;
+    display: inline-block; }
+
+.navigation-bar {
+  margin-bottom: 1em;
+  padding: 0.5em;
+  text-align: center;
+  border-bottom: 2px solid #FF696E; }
+  .navigation-bar .links a {
+    display: inline-block;
+    margin: 0 0.2em; }
+
+.reservation-component {
+  width: 100%;
+  background-color: #E2E3D9;
+  margin-bottom: 0.5em; }
+  .reservation-component .id {
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.5em; }
+  .reservation-component .status {
+    display: inline-block;
+    padding: 1em 1em;
+    height: 100%;
+    float: right;
+    background-color: #FF696E; }
+    .reservation-component .status.redeemed {
+      background-color: #FFAFAC; }
+
+/*
+    CLEARFIX HACK
+    (http://nicolasgallagher.com/micro-clearfix-hack/)
+*/
+.clearfix:before, .event-component:before, .clearfix:after, .event-component:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after, .event-component:after {
+  clear: both; }
