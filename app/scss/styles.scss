@@ -174,12 +174,16 @@ h4 {
 
 // Occurrence-page -----------------------------
 .occurrence-page {
-    .info {
-        width: 100%;
+    .meta {
         margin-bottom: 1em;
 
-        .date {
-            font-weight: bold;
+        .info {
+            float: left;
+            display: block;
+        }
+
+        button#sellticket {
+            float: right;
         }
     }
 }
