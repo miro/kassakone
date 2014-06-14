@@ -27,7 +27,7 @@ define([
         },
 
         url: function() {
-            return config.baseUrl + '/Occurrence/' + (!this.id ? '' : this.id);
+            return config.baseUrl + 'Occurrence/' + (!this.id ? '' : this.id);
         }
 
     })
