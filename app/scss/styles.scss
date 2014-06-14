@@ -18,7 +18,7 @@ html {
 
 body {
     font-family: "Helvetica Neue", arial, sans-serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
 
@@ -39,7 +39,9 @@ button {
     text-decoration: none;
     background-color: $red;
     border: 0;
+
     font-weight: 100;
+    font-size: 0.75em;
     letter-spacing: 0.1em;
     text-align: center;
 
@@ -57,11 +59,7 @@ button {
 
 
 }
-.small-button {
-    @extend .button;
-    font-size: 0.7em;  
-    font-weight: 200;  
-}
+
 
 .input {
     width: 100%;
@@ -101,13 +99,13 @@ h1, h2, h3, h4 {
     }
 }
 h1 {
-    font-size: 3em;
+    font-size: 1.8em;
     text-transform: uppercase;
     font-weight: 100;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 1.3em;
     text-transform: uppercase;
     font-weight: 200;
     
@@ -225,8 +223,9 @@ hr {
 
 // Reservation-page -------------------------------
 .reservation-page {
-    button.cancelButton {
-        float: right;
+    button {
+        margin: 0 auto 1em auto;
+        display: block;        
     }
 }
 
@@ -332,14 +331,14 @@ hr {
 
     .reserver {
         float: left;
-        font-size: 1em;
-        margin: 1em;
+        font-size: 0.7em;
+        margin: 1.5em 0.1em;
     }
 
     .status {
         margin: 0;
         display: inline-block;
-        padding: 1em 1em;
+        padding: 1em 0.5em;
         height: 100%;
         position: absolute;
         right: 0;
@@ -350,6 +349,8 @@ hr {
         font-weight: 100;
         letter-spacing: 0.1em;
         text-transform: uppercase;
+        font-size: 0.7em;
+
 
         &.redeemed {
             background-color: $red-light;

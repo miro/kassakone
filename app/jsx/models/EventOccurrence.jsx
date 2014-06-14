@@ -28,6 +28,14 @@ define([
 
         url: function() {
             return config.baseUrl + 'Occurrence/' + (!this.id ? '' : this.id);
+        },
+
+        parse: function(response) {
+            if (!_.isUndefined(response.eventId)) {
+                this.eventId = response.eventId;
+            }
+
+            return response;
         }
 
     })
