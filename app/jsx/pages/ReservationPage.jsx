@@ -122,7 +122,7 @@ define([
             return <div className="reservation-page">
                 <h3 className="title">
                     {this.props.eventOccurrenceModel.get('eventName')}
-                    {moment(this.props.model.get('startTime')).format(' DD.MM.YY HH:mm')}
+                    {moment(this.props.eventOccurrenceModel.get('startTime')).format(' DD.MM.YY HH:mm')}
                 </h3>
                 <h3 className={"id"}>
                     Reservation ID: {this.props.model.get('id')}{reserverDescription}
