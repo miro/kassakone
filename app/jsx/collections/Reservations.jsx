@@ -20,17 +20,6 @@ define([
             }
 
             return config.baseUrl + 'Occurrence/' + this.occurrenceId + '/Reservation';
-        },
-
-        discardExpiredReservations: function discardExpiredReservations() {
-            var validReservations = [];
-            _.each(this.models, function(reservation) {
-                if (!reservation.expired) {
-                    validReservations.push(reservation);
-                }
-            });
-
-            this.models = validReservations;
         }
 	});
 
