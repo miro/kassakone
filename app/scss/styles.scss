@@ -215,6 +215,13 @@ hr {
     }
 }
 
+// Reservation-page -------------------------------
+.reservation-page {
+    button.cancelButton {
+        float: right;
+    }
+}
+
 
 
 // #### COMPONENTS ##############################
@@ -276,6 +283,10 @@ hr {
     transition: opacity 0.5s;
 
     box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2);
+
+    &.show {
+        opacity: 1;
+    }
 
     .notification-text {
         font-weight: 100;
