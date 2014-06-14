@@ -314,6 +314,12 @@ hr {
         margin: 0.5em;
     }
 
+    .reserver {
+        float: left;
+        font-size: 1em;
+        margin: 1em;
+    }
+
     .status {
         margin: 0;
         display: inline-block;
@@ -335,6 +341,13 @@ hr {
     }
 }
 
+.footer {
+    border-top: 1px solid $red;
+    padding: 0.5em 0;
+    text-align: right;
+    font-size: 0.7em;
+    font-style: italic;
+}
 
 
 

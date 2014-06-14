@@ -23,6 +23,9 @@ define([
                 <div className="chrome">
                     {navigation}
                     <Container content={this.props.content} />
+                    <div className="footer">
+                        <p>&copy; Ananassi &amp; Co 2014</p>
+                    </div>
                 </div>
             )
         }
