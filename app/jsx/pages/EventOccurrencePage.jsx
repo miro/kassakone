@@ -72,10 +72,18 @@ define([
                 <div className="meta clearfix">
                     <div className="info">
                         <p className="status">
-                            Tickets reserved {this.props.occurrence.get('reservedPlaces')} + {this.props.occurrence.get('totalPlaces')} / {this.props.occurrence.get('soldPlaces')}
+                            Tickets redeemed: {this.props.reservations.getRedeemedCount()}
                         </p>
+                        <p className="status">
+                            Tickets reserved: {this.props.reservations.getReservedCount()}
+                        </p>
+                        <p className="status">
+                            &#61; {this.props.occurrence.get('redeemedReservationCount') + this.props.occurrence.get('reservedReservationCount')}
+                        </p>
+
+
                         <p className="price">
-                            {this.props.occurrence.get('price')} &euro;
+                            Ticket price: {this.props.occurrence.get('price')} &euro;
                         </p>
                     </div>
                 </div>

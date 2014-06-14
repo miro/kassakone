@@ -35,7 +35,21 @@ define([
                 default:
                     return 5;
             }
-        } 
+        },
+
+        getReservedCount: function() {
+            return this._filterByStatus('RESERVED').length;
+        },
+
+        getRedeemedCount: function() {
+            return this._filterByStatus('REDEEMED').length;
+        },
+
+        _filterByStatus: function filterByStatus(status) {
+            return _.filter(this.models, function(model) {
+                return model.get('status') === status;
+            });  
+        }
 	});
 
 });
