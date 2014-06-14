@@ -85,6 +85,10 @@ define([
                 app.navigate('');
             }
         },
+
+        gotoOccurrence: function() {
+            app.router.jumpToOccurrence(this.props.eventOccurrenceModel);
+        },
         
         render: function() {
             var reservationStatus = this.props.model.get('status');
@@ -95,7 +99,7 @@ define([
 
             switch (reservationStatus) {
                 case "RESERVED":
-                    reservationStatusDescription = 'Reservation expires ' + moment(this.props.model.get('keke')).format('DD.MM.YY HH:mm');
+                    reservationStatusDescription = 'Reservation is valid, waiting for redemption';
                     buttons.push(<button className="button" className="redeemButton" onClick={this.redeemReservation}>Redeem reservation</button>);
                     buttons.push(<button className="button" className="cancelButton" onClick={this.cancelReservation}>Delete reservation</button>);
                     break;
@@ -120,7 +124,7 @@ define([
             }
 
             return <div className="reservation-page">
-                <h3 className="title">
+                <h3 className="title link" onClick={this.gotoOccurrence}>
                     {this.props.eventOccurrenceModel.get('eventName')}
                     {moment(this.props.eventOccurrenceModel.get('startTime')).format(' DD.MM.YY HH:mm')}
                 </h3>
@@ -131,7 +135,7 @@ define([
                 <h3>{sellerDescription}</h3>
                 <p>{reservationStatusDescription}</p>
 
-                <div className="buttons">{buttons}</div>
+                <div className="buttons clearfix">{buttons}</div>
             </div>
         },
 
