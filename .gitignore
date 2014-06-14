@@ -25,5 +25,7 @@ build/Release
 # node_modules
 
 # Do not include dynamically created files
-# app/js/
-# app/css/
+app/js/*
+app/css/*
+
+node_modules/
