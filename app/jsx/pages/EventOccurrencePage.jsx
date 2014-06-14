@@ -91,7 +91,7 @@ define([
         startUpdater: function() {
             var that = this;
             this.updater = setInterval(function() {
-                that.updateCollection();
+                that.updateReservations();
             }, config.pollInterval);
         },
 
