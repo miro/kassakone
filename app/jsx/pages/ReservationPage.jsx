@@ -4,17 +4,21 @@ define([
     'underscore',
     'react',
     'app',
+    'config',
     'jquery',
     'moment',
     'models/Reservation',
+    'models/EventOccurrence',
     'react-backbone'
 ], function(
     _,
     React,
     app,
+    config,
     $,
     moment,
     ReservationModel,
+    EventOccurrenceModel,
     rbbMixin
 ) {
 
@@ -22,8 +26,46 @@ define([
 
         mixins: [rbbMixin],
         updateOnProps: {
-            'model': 'model'
+            model: 'model',
+            eventOccurrenceModel: 'model'
          },
+
+        componentWillMount: function() {
+            this.startUpdater();
+        },
+
+        componentWillUnmount: function() {
+            this.stopUpdater();
+        },
+
+
+        getDefaultProps: function(options) {
+            var self = this;
+            var eventOccurrenceModel = _.find(app.data.eventOccurrences.models, function(occ) {
+                return occ.get('id') == self.props.model.get('eventOccurrenceId');
+            });
+ 
+            if (!eventOccurrenceModel) {
+                eventOccurrenceModel = new EventOccurrenceModel({eventId: null});
+                if (!this.props.model.get('eventOccurrenceId')) {
+                    this.listenTo(this.props.model, 'change', function() {
+                        // This wont get called if we come here from the search page - why?
+                        this._getEventOccurrenceModel();
+                    }, this);
+                }
+                else {
+                    eventOccurrenceModel.id = this.props.model.get('eventOccurrenceId');
+                    eventOccurrenceModel.fetch();
+                }
+            }
+
+            return {eventOccurrenceModel: eventOccurrenceModel};
+        },
+
+        _getEventOccurrenceModel: function getEventOccurrenceModel() {
+            this.props.eventOccurrenceModel.id = this.props.model.get('eventOccurrenceId');
+            this.props.eventOccurrenceModel.fetch();
+        },
 
         redeemReservation: function() {
             this.props.model.set({'status':'REDEEMED'});
@@ -54,8 +96,8 @@ define([
             switch (reservationStatus) {
                 case "RESERVED":
                     reservationStatusDescription = 'Reservation expires ' + moment(this.props.model.get('keke')).format('DD.MM.YY HH:mm');
-                    buttons.push(<button className="button" onClick={this.redeemReservation}>Redeem reservation</button>);
-                    buttons.push(<button className="button" onClick={this.cancelReservation}>Delete reservation</button>);
+                    buttons.push(<button className="button" key="redeemButton" onClick={this.redeemReservation}>Redeem reservation</button>);
+                    buttons.push(<button className="button" key="cancelButton" onClick={this.cancelReservation}>Delete reservation</button>);
                     break;
 
                 case "REDEEMED":
@@ -78,6 +120,10 @@ define([
             }
 
             return <div className={"reservation"}>
+                <h3 className="title">
+                    {this.props.eventOccurrenceModel.get('eventName')}
+                    {moment(this.props.model.get('startTime')).format(' DD.MM.YY HH:mm')}
+                </h3>
                 <h3 className={"id"}>
                     Reservation ID: {this.props.model.get('id')}{reserverDescription}
                 </h3>
@@ -87,6 +133,21 @@ define([
 
                 <div className="buttons">{buttons}</div>
             </div>
+        },
+
+        startUpdater: function() {
+            var that = this;
+            this.updater = setInterval(function() {
+                that.updateReservations();
+            }, config.pollInterval);
+        },
+
+        stopUpdater: function() {
+            clearInterval(this.updater);
+        },
+
+        updateReservations: function() {
+            this.props.model.fetch();
         }
 
     });
