@@ -47,6 +47,8 @@ define([
         render: function() {
             var reservationStatus = this.props.model.get('status');
             var reservationStatusDescription;
+            var reserverDescription = "";
+            var sellerDescription = "";
             var buttons = [];
 
             switch (reservationStatus) {
@@ -69,15 +71,21 @@ define([
                     break
             }
 
+            if (this.props.model.get('reserver')) {
+                reserverDescription = " / " + this.props.model.get('reserver');
+            } else {
+                sellerDescription = "This item was sold by " + this.props.model.get('seller');
+            }
+
             return <div className={"reservation"}>
                 <h3 className={"id"}>
-                    Reservation ID: {this.props.model.get('id')}
+                    Reservation ID: {this.props.model.get('id')}{reserverDescription}
                 </h3>
-                <p>
-                    {reservationStatusDescription}
-                </p>
 
-                {buttons}
+                <h3>{sellerDescription}</h3>
+                <p>{reservationStatusDescription}</p>
+
+                <div className="buttons">{buttons}</div>
             </div>
         }
 
