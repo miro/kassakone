@@ -4,12 +4,14 @@ define([
     'underscore',
     'react',
     'react-backbone',
+    'config',
     'components/Reservation',
     'models/Reservation'
 ], function(
     _,
     React,
     rbbMixin,
+    config,
     ReservationComponent,
     ReservationModel
 ) {
@@ -21,6 +23,15 @@ define([
         updateOnProps: {
             occurrence: 'model',
             reservations: 'collection'
+        },
+
+
+        componentWillMount: function() {
+            this.startUpdater();
+        },
+
+        componentWillUnmount: function() {
+            this.stopUpdater();
         },
 
         sellTicket: function sellTicket() {
@@ -41,6 +52,16 @@ define([
                 reservations.push(<ReservationComponent model={reservation} key={reservation.get('id')} />);
             });
 
+            // Alter BuyButton based on if the occurrence has already begun
+            var buyButton = [];
+            if (moment(this.props.occurrence.get('startTime')).isAfter(moment())) {
+                buyButton.push(<button id="sellticket" onClick={this.sellTicket}>Sell Ticket</button>);
+            }
+            else {
+                buyButton.push(<p>Occurrence has started</p>);
+            }
+
+
             return <div className="occurrence-page">
                 <h3 className="title">
                     {moment(this.props.occurrence.get('startTime')).format('DD.MM.YY HH:mm')}
@@ -55,12 +76,9 @@ define([
                             {this.props.occurrence.get('price')} &euro;
                         </p>
                     </div>
-
-                    <button id="sellticket" onClick={this.sellTicket}>Sell Ticket</button>
                 </div>
 
-                
-
+                {buyButton}
 
                 <h4 className="title">Reservations</h4>
 
@@ -68,7 +86,23 @@ define([
                     {reservations}
                 </div>
             </div>;
+        },
+
+        startUpdater: function() {
+            var that = this;
+            this.updater = setInterval(function() {
+                that.updateCollection();
+            }, config.pollInterval);
+        },
+
+        stopUpdater: function() {
+            clearInterval(this.updater);
+        },
+
+        updateReservations: function() {
+            this.props.reservations.fetch();
         }
+
 
     });
 
