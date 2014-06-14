@@ -91,6 +91,14 @@ h1, h2, h3, h4 {
     letter-spacing: 0.05em;
     color: $red;
     margin-bottom: 0.5em;
+
+    &.link {
+        cursor: pointer;
+        &:hover {
+            background-color: $red;
+            color: #FFF;
+        }
+    }
 }
 h1 {
     font-size: 3em;
@@ -302,11 +310,8 @@ hr {
     border-bottom: 2px solid $red;
 
     .links {
-        a {
-            @extend .small-button;
-            display: inline-block;
-            margin: 0 0.2em;
-        }
+        .events, .search {float: left;}
+        .logout {float:right}
     }
 }
 
@@ -354,6 +359,8 @@ hr {
 
 .footer {
     border-top: 1px solid $red;
+
+    margin-top: 20px;
     padding: 0.5em 0;
     text-align: right;
     font-size: 0.7em;
