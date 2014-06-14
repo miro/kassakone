@@ -20,7 +20,22 @@ define([
             }
 
             return config.baseUrl + 'Occurrence/' + this.occurrenceId + '/Reservation';
-        }
+        },
+
+        comparator: function(model) {
+            switch (model.get('status')) {
+                case "RESERVED":
+                    return 1;
+                case "REDEEMED":
+                    return 2;
+                case "CANCELLED":
+                    return 3;
+                case "EXPIRED":
+                    return 4;
+                default:
+                    return 5;
+            }
+        } 
 	});
 
 });
