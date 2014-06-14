@@ -56,6 +56,8 @@ define([
         },
 
         sellTicket: function sellTicket() {
+            if(!confirm('Do you want to sell one ticket to this occurrence?')) return;
+
             var self = this;
             var reservationModel = new ReservationModel();
             reservationModel.occurrenceId = this.props.occurrence.get('id');
