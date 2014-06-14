@@ -3,6 +3,7 @@
 define([
     'underscore',
     'react',
+    'moment',
     'react-backbone',
     'config',
     'components/Reservation',
@@ -10,6 +11,7 @@ define([
 ], function(
     _,
     React,
+    moment,
     rbbMixin,
     config,
     ReservationComponent,
