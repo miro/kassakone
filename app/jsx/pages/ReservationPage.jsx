@@ -96,8 +96,8 @@ define([
             switch (reservationStatus) {
                 case "RESERVED":
                     reservationStatusDescription = 'Reservation expires ' + moment(this.props.model.get('keke')).format('DD.MM.YY HH:mm');
-                    buttons.push(<button className="button" key="redeemButton" onClick={this.redeemReservation}>Redeem reservation</button>);
-                    buttons.push(<button className="button" key="cancelButton" onClick={this.cancelReservation}>Delete reservation</button>);
+                    buttons.push(<button className="button" className="redeemButton" onClick={this.redeemReservation}>Redeem reservation</button>);
+                    buttons.push(<button className="button" className="cancelButton" onClick={this.cancelReservation}>Delete reservation</button>);
                     break;
 
                 case "REDEEMED":
@@ -119,7 +119,7 @@ define([
                 sellerDescription = "This item was sold by " + this.props.model.get('seller');
             }
 
-            return <div className={"reservation"}>
+            return <div className="reservation-page">
                 <h3 className="title">
                     {this.props.eventOccurrenceModel.get('eventName')}
                     {moment(this.props.model.get('startTime')).format(' DD.MM.YY HH:mm')}
