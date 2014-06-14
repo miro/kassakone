@@ -22,7 +22,10 @@ define([
             return (
                 React.DOM.div( {className:"chrome"}, 
                     navigation,
-                    Container( {content:this.props.content} )
+                    Container( {content:this.props.content} ),
+                    React.DOM.div( {className:"footer"}, 
+                        React.DOM.p(null, "© Ananassi & Co 2014")
+                    )
                 )
             )
         }

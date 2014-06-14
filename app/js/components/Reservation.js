@@ -16,24 +16,24 @@ define([
         mixins: [rbbMixin],
         updateOnProps: { 'model': 'model' },
 
-        render: function() {
-            
-            var statusNode; 
-            if (this.props.model.get('redeemed')) {
-                statusNode = React.DOM.div( {className:"status redeemed"}, 
-                    "Redeemed"
-                );
-            } else {
-                statusNode = React.DOM.div( {className:"status"}, 
-                    "Open"
-                );
-            }
+        statusClick: function() {
+            app.router.jumpToReservation(this.props.model);
+        },
+
+        render: function() {   
+            var statusClass = "status "; 
+            statusClass += this.props.model.get('status') === "REDEEMED" ? "redeemed" : "";
 
             return React.DOM.div( {className:"reservation-component clearfix"}, 
                 React.DOM.div( {className:"id"}, 
                     this.props.model.get('id')
                 ),
-                statusNode
+
+                React.DOM.div( {className:"reserver"}, this.props.model.get('reserver')),
+
+                React.DOM.button( {className:statusClass, onClick:this.statusClick}, 
+                    this.props.model.get('status')
+                )
             );
             
         },

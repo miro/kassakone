@@ -20,8 +20,8 @@ define([
                     )
                 ),
 
-                React.DOM.div( {className:"buttons"}, 
-                    React.DOM.a( {href:href, className:"small-button"}, "Details")
+                React.DOM.a( {href:href}, 
+                    React.DOM.button( {className:"small-button"}, "Details")
                 )
             );
         }

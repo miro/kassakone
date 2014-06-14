@@ -3,7 +3,7 @@
 define([
     'underscore',
     'react',
-    'app',
+    'config',
     'jquery',
     'moment',
     'models/Event',
@@ -13,7 +13,7 @@ define([
 ], function(
     _,
     React,
-    App,
+    config,
     $,
     moment,
     EventModel,
@@ -30,8 +30,12 @@ define([
             occurrences: 'collection'
         },
 
-        getInitialState: function() {
-            return {};
+        componentWillMount: function() {
+            this.startUpdater();
+        },
+
+        componentWillUnmount: function() {
+            this.stopUpdater();
         },
 
         duration: function() {
@@ -74,6 +78,22 @@ define([
                     )
                 )
             )
+        },
+
+        startUpdater: function() {
+            var that = this;
+            this.updater = setInterval(function() {
+                that.updateReservations();
+            }, config.pollInterval);
+        },
+
+        stopUpdater: function() {
+            clearInterval(this.updater);
+        },
+
+        updateReservations: function() {
+            this.props.model.fetch();
+            this.props.occurrences.fetch();
         }
 
     });

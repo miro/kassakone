@@ -10,12 +10,13 @@ define([
     var Navigation = React.createClass({displayName: 'Navigation',
         render: function() {
             return React.DOM.div( {className:"navigation-bar"}, 
-                    React.DOM.div( {className:"links"}, 
-                        React.DOM.a( {href:"#"}, "Events"),
-                        React.DOM.a( {href:"#search"}, "Search"),
-                        React.DOM.a( {href:"#logout"}, "Logout")
-                    )  
-                )
+                React.DOM.h1( {className:"title"}, "RIOT"),
+                React.DOM.div( {className:"links"}, 
+                    React.DOM.a( {href:"#"}, "Events"),
+                    React.DOM.a( {href:"#search"}, "Search"),
+                    React.DOM.a( {href:"#logout"}, "Logout")
+                )  
+            );
         }
     });
     

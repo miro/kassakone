@@ -22,15 +22,33 @@ define([
             return config.baseUrl + 'Occurrence/' + this.occurrenceId + '/Reservation';
         },
 
-        parse: function discardExpiredReservations(response) {
-            var validReservations = [];
-            _.each(response, function(reservation) {
-                if (!reservation.expired) {
-                    validReservations.push(reservation);
-                }
-            });
+        comparator: function(model) {
+            switch (model.get('status')) {
+                case "RESERVED":
+                    return 1;
+                case "REDEEMED":
+                    return 2;
+                case "CANCELLED":
+                    return 3;
+                case "EXPIRED":
+                    return 4;
+                default:
+                    return 5;
+            }
+        },
 
-            return validReservations;
+        getReservedCount: function() {
+            return this._filterByStatus('RESERVED').length;
+        },
+
+        getRedeemedCount: function() {
+            return this._filterByStatus('REDEEMED').length;
+        },
+
+        _filterByStatus: function filterByStatus(status) {
+            return _.filter(this.models, function(model) {
+                return model.get('status') === status;
+            });  
         }
 	});
 

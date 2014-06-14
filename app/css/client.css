@@ -35,6 +35,8 @@ table {
   font-family: "Helvetica Neue", arial, sans-serif;
   font-size: 1em;
   font-weight: 100;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 
@@ -59,6 +61,7 @@ body {
   letter-spacing: 0.1em;
   text-align: center;
   cursor: pointer;
+  -webkit-transition: background-color 0.1s;
   transition: background-color 0.1s; }
   .button:hover, .small-button:hover, .navigation-bar .links a:hover, button:hover {
     background: #FFAFAC; }
@@ -77,6 +80,7 @@ body {
   text-align: center; }
   .input:focus {
     border: 1px solid rgba(255, 105, 110, 0.5);
+    -webkit-box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2);
     box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2); }
 
 input:focus, button:focus {
@@ -113,16 +117,28 @@ h4 {
   text-transform: uppercase;
   font-weight: 500; }
 
+h1.title {
+  display: inline-block;
+  padding: 2px 0;
+  margin: 2px 0 4px 0;
+  font-size: 2em;
+  text-align: right;
+  background-color: #FF696E;
+  color: #FFF; }
+
 p {
   margin-bottom: 0.5em; }
 
 .title {
   display: inline-block;
-  border: 1px solid #FF696E;
   width: 100%;
   text-align: center;
   padding: 1em 0.5em;
-  margin: 0.5em 0; }
+  margin: 0.5em 0;
+  border-top: 1px solid #FF696E;
+  border-bottom: 1px solid #FF696E;
+  border-left: 10px solid #FF696E;
+  border-right: 10px solid #FF696E; }
 
 .center, .login-wrap form {
   text-align: center; }
@@ -152,17 +168,26 @@ hr {
   margin-bottom: 1em; }
   .occurrence-page .meta .info {
     float: left;
-    display: block; }
+    display: block;
+    margin-top: 0.5em; }
+    .occurrence-page .meta .info p {
+      margin: 0; }
+    .occurrence-page .meta .info .status {
+      font-weight: 500; }
   .occurrence-page .meta button#sellticket {
     float: right; }
+
+.reservation-page button.cancelButton {
+  float: right; }
 
 .event-component {
   display: block;
   height: 100%;
   margin-bottom: 2em; }
   .event-component .meta {
-    width: 100%; }
-  .event-component .buttons {
+    width: 100%;
+    margin-bottom: 0.5em; }
+  .event-component button {
     float: right;
     margin-top: 1em 0; }
 
@@ -191,15 +216,19 @@ hr {
   padding: 1em;
   opacity: 0;
   background-color: #FFAFAC;
+  -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
+  -webkit-box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2);
   box-shadow: 0px 0px 6px rgba(255, 105, 110, 0.2); }
+  .notification-area.show {
+    opacity: 1; }
   .notification-area .notification-text {
     font-weight: 100;
     display: inline-block; }
 
 .navigation-bar {
   margin-bottom: 1em;
-  padding: 0.5em;
+  padding: 0.5em 0;
   text-align: center;
   border-bottom: 2px solid #FF696E; }
   .navigation-bar .links a {
@@ -208,21 +237,39 @@ hr {
 
 .reservation-component {
   width: 100%;
-  background-color: #E2E3D9;
-  margin-bottom: 0.5em; }
+  border: 1px solid #FF696E;
+  margin-bottom: 0.5em;
+  position: relative; }
   .reservation-component .id {
     float: left;
     font-size: 1.5em;
     font-weight: bold;
     margin: 0.5em; }
+  .reservation-component .reserver {
+    float: left;
+    font-size: 1em;
+    margin: 1em; }
   .reservation-component .status {
+    margin: 0;
     display: inline-block;
     padding: 1em 1em;
     height: 100%;
-    float: right;
-    background-color: #FF696E; }
+    position: absolute;
+    right: 0;
+    background-color: #FF696E;
+    color: white;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+    text-transform: uppercase; }
     .reservation-component .status.redeemed {
       background-color: #FFAFAC; }
+
+.footer {
+  border-top: 1px solid #FF696E;
+  padding: 0.5em 0;
+  text-align: right;
+  font-size: 0.7em;
+  font-style: italic; }
 
 /*
     CLEARFIX HACK

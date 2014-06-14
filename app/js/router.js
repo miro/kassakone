@@ -129,16 +129,13 @@ define([
         reservation: function(id) {
             if (this.checkCredentials()) {
                 var reservationModel = new ReservationModel({id: id});
-                
-                function updateWhenLoaded() {
-                    this.chrome.setProps({
-                        content: ReservationPage( 
-                            {reservationId:id, 
-                            model:reservationModel} )
-                    });
-                }
+                reservationModel.fetch();
 
-                reservationModel.fetch().then(updateWhenLoaded.bind(this));
+                this.chrome.setProps({
+                    content: ReservationPage( 
+                        {reservationId:id, 
+                        model:reservationModel} )
+                });
             }
         },
         // jumpToReservation (bad function name, we need something more describing)
@@ -147,7 +144,6 @@ define([
         jumpToReservation: function(reservationModel) {
             if (this.checkCredentials()) {
                 window.history.pushState("", "", "/#reservation/" + reservationModel.id);
-                Backbone.history.checkUrl();
                 this.chrome.setProps({
                     content: ReservationPage( 
                         {reservationId:reservationModel.id, 

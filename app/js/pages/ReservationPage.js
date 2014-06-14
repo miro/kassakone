@@ -4,15 +4,21 @@ define([
     'underscore',
     'react',
     'app',
+    'config',
     'jquery',
+    'moment',
     'models/Reservation',
+    'models/EventOccurrence',
     'react-backbone'
 ], function(
     _,
     React,
-    App,
+    app,
+    config,
     $,
+    moment,
     ReservationModel,
+    EventOccurrenceModel,
     rbbMixin
 ) {
 
@@ -20,43 +26,128 @@ define([
 
         mixins: [rbbMixin],
         updateOnProps: {
-            'model': 'model'
+            model: 'model',
+            eventOccurrenceModel: 'model'
          },
 
+        componentWillMount: function() {
+            this.startUpdater();
+        },
+
+        componentWillUnmount: function() {
+            this.stopUpdater();
+        },
+
+
+        getDefaultProps: function(options) {
+            var self = this;
+            var eventOccurrenceModel = _.find(app.data.eventOccurrences.models, function(occ) {
+                return occ.get('id') == self.props.model.get('eventOccurrenceId');
+            });
+ 
+            if (!eventOccurrenceModel) {
+                eventOccurrenceModel = new EventOccurrenceModel({eventId: null});
+                if (!this.props.model.get('eventOccurrenceId')) {
+                    this.listenTo(this.props.model, 'change', function() {
+                        // This wont get called if we come here from the search page - why?
+                        this._getEventOccurrenceModel();
+                    }, this);
+                }
+                else {
+                    eventOccurrenceModel.id = this.props.model.get('eventOccurrenceId');
+                    eventOccurrenceModel.fetch();
+                }
+            }
+
+            return {eventOccurrenceModel: eventOccurrenceModel};
+        },
+
+        _getEventOccurrenceModel: function getEventOccurrenceModel() {
+            this.props.eventOccurrenceModel.id = this.props.model.get('eventOccurrenceId');
+            this.props.eventOccurrenceModel.fetch();
+        },
+
         redeemReservation: function() {
-            this.props.model.set({'redeemed':'true'});
+            this.props.model.set({'status':'REDEEMED'});
             this.props.model.save();
             console.log("Redeemed reservation");
         },
 
-        cancelRedemption: function() {
-            this.props.model.set({'redeemed':'false'});
+        undoRedemption: function() {
+            this.props.model.set({'status':'RESERVED'});
             this.props.model.save();
             console.log("Cancelled redemption");
         },
+
+        cancelReservation: function() {
+            if (confirm('Are you sure you want to delete this reservation?')) {
+                this.props.model.destroy();
+                app.navigate('');
+            }
+        },
         
         render: function() {
-            var reservationStatus;
-            if (this.props.model.get('expired')) {
-                reservationStatus = 'Reservation expired';
-            } else {
-                reservationStatus = 'Reservation expires ' + moment(this.props.model.get('keke')).format('DD.MM.YY HH:mm');
+            var reservationStatus = this.props.model.get('status');
+            var reservationStatusDescription;
+            var reserverDescription = "";
+            var sellerDescription = "";
+            var buttons = [];
+
+            switch (reservationStatus) {
+                case "RESERVED":
+                    reservationStatusDescription = 'Reservation expires ' + moment(this.props.model.get('keke')).format('DD.MM.YY HH:mm');
+                    buttons.push(React.DOM.button( {className:"button", className:"redeemButton", onClick:this.redeemReservation}, "Redeem reservation"));
+                    buttons.push(React.DOM.button( {className:"button", className:"cancelButton", onClick:this.cancelReservation}, "Delete reservation"));
+                    break;
+
+                case "REDEEMED":
+                    reservationStatusDescription = 'Reservation redeemed';
+                    buttons.push(React.DOM.button( {className:"button", onClick:this.undoRedemption}, "Undo redemption"));
+                    break;
+                case "CANCELLED":
+                    reservationStatusDescription = 'Reservation cancelled';
+                    break;
+
+                case "EXPIRED":
+                    reservationStatusDescription = 'Reservation expired';
+                    break
             }
 
-            return React.DOM.div( {className:"reservation"}, 
+            if (this.props.model.get('reserver')) {
+                reserverDescription = " / " + this.props.model.get('reserver');
+            } else {
+                sellerDescription = "This item was sold by " + this.props.model.get('seller');
+            }
+
+            return React.DOM.div( {className:"reservation-page"}, 
+                React.DOM.h3( {className:"title"}, 
+                    this.props.eventOccurrenceModel.get('eventName'),
+                    moment(this.props.model.get('startTime')).format(' DD.MM.YY HH:mm')
+                ),
                 React.DOM.h3( {className:"id"}, 
-                    "Reservation ID: ", this.props.model.get('id')
+                    "Reservation ID: ", this.props.model.get('id'),reserverDescription
                 ),
-                React.DOM.p( {className:"expired"}, 
-                    reservationStatus
-                ),
-                React.DOM.p( {className:"redeemed"}, 
-                    this.props.model.get('redeemed') ? 
-                        React.DOM.button( {className:"button", onClick:this.cancelRedemption}, "Cancel redemption") :
-                        React.DOM.button( {className:"button", onClick:this.redeemReservation}, "Redeem reservation")                        
-                    
-                )
+
+                React.DOM.h3(null, sellerDescription),
+                React.DOM.p(null, reservationStatusDescription),
+
+                React.DOM.div( {className:"buttons"}, buttons)
             )
+        },
+
+        startUpdater: function() {
+            var that = this;
+            this.updater = setInterval(function() {
+                that.updateReservations();
+            }, config.pollInterval);
+        },
+
+        stopUpdater: function() {
+            clearInterval(this.updater);
+        },
+
+        updateReservations: function() {
+            this.props.model.fetch();
         }
 
     });

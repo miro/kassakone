@@ -25,6 +25,10 @@ require([
 	app.router = new Router();
 	Backbone.history.start();
 
+	app.navigate = function(route) {
+		app.router.jumpTo(route);
+	};
+
 	console.log("App started");
 
 	return app;

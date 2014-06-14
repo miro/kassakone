@@ -25,8 +25,12 @@ define([
                             <span className="price">{this.props.model.get('price')} &euro;</span>
                         </p>
                         <p className="status">
-                            Tickets reserved {this.props.model.get('reservedPlaces')} + {this.props.model.get('totalPlaces')} / {this.props.model.get('soldPlaces')}
+                            Tickets reserved: {this.props.model.get('reservedReservationCount')}
                         </p>
+                        <p className="status">
+                            Tickets redeemed: {this.props.model.get('redeemedReservationCount')}
+                        </p>
+                        
                     </div>
     
                     <button onClick={this.moveToOccurrencePage} className="infobutton small-button">Info</button>

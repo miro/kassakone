@@ -25,8 +25,12 @@ define([
                             React.DOM.span( {className:"price"}, this.props.model.get('price'), " €")
                         ),
                         React.DOM.p( {className:"status"}, 
-                            "Tickets reserved ", this.props.model.get('reservedPlaces'), " + ", this.props.model.get('totalPlaces'), " / ", this.props.model.get('soldPlaces')
+                            "Tickets reserved: ", this.props.model.get('reservedReservationCount')
+                        ),
+                        React.DOM.p( {className:"status"}, 
+                            "Tickets redeemed: ", this.props.model.get('redeemedReservationCount')
                         )
+                        
                     ),
     
                     React.DOM.button( {onClick:this.moveToOccurrencePage, className:"infobutton small-button"}, "Info")
