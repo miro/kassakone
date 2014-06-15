@@ -88,7 +88,7 @@ input:focus, button:focus {
 h1, h2, h3, h4 {
     letter-spacing: 0.05em;
     color: $red;
-    margin-bottom: 0.5em;
+    margin: 0.5em 0;
 
     &.link {
         cursor: pointer;
@@ -133,6 +133,16 @@ h1.title {
 
     background-color: $red;
     color: #FFF;
+}
+
+h4.location {
+    display: inline-block;
+    color: #FFF;
+    background-color: $red;
+    padding: 3px 0;
+    text-align: center;
+    width: 100%;
+    margin: 0;
 }
 
 p {
@@ -189,7 +199,7 @@ hr {
 // Search page ---------------------------------
 .search-page {
     input {
-        font-size: 2em;
+        font-size: 1.5em;
         padding: 0.1em;
     }
 }
@@ -223,11 +233,21 @@ hr {
 
 // Reservation-page -------------------------------
 .reservation-page {
-    button {
-        margin: 0 auto 1em auto;
-        display: block;        
+    .buttons {
+        margin-top: 0.7em;
+
+        button {
+            margin: 0 auto 1em auto;
+            display: block;
+            min-width: 80%;  
+        }
     }
 }
+
+// Event-page -------------------------------------
+
+
+
 
 
 
@@ -303,7 +323,7 @@ hr {
 
 // Navigation
 .navigation-bar {
-    margin-bottom: 1em;
+    margin-bottom: 0.2em;
     padding: 0.5em 0;
     text-align: center;
     border-bottom: 2px solid $red;

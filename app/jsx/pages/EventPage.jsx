@@ -58,26 +58,25 @@ define([
                 eventOccurrenceComponents.push(<EventOccurrence model={model} key={model.id} />);
             });
 
-            return (
-                <div className="event">
-                    <h2 className="name">
-                        {this.props.model.get('name')}
-                    </h2>
-                    <p className="description">
-                        {this.props.model.get('description')}
-                    </p>
-                    <p className="duration">
-                        Duration: {this.duration()}
-                    </p>
+            return <div className="event-page">
+                <h4 className="location">Event</h4>
+                <h2 className="name">
+                    {this.props.model.get('name')}
+                </h2>
+                <p className="description">
+                    {this.props.model.get('description')}
+                </p>
+                <p className="duration">
+                    Duration: {this.duration()}
+                </p>
 
-                    <hr />
+                <hr />
 
-                    <h3>Occurrences</h3>
-                    <div className="occurrences">
-                        {eventOccurrenceComponents}
-                    </div>
+                <h3>Occurrences</h3>
+                <div className="occurrences">
+                    {eventOccurrenceComponents}
                 </div>
-            )
+            </div>
         },
 
         startUpdater: function() {

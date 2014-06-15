@@ -37,6 +37,7 @@ define([
             eventComponents = eventModels.map(toComponent);
 
             return <div className="event-page">
+                <h4 className="location">Events</h4>
                 {eventComponents}
             </div>;
         },

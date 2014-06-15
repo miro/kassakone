@@ -88,6 +88,7 @@ define([
 
 
             return <div className="occurrence-page">
+                <h4 className="location">Occurrence</h4>
                 <h3 className="title">
                     {this.props.eventModel.get('name')} 
                     {moment(this.props.occurrence.get('startTime')).format(' DD.MM.YY HH:mm')}

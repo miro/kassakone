@@ -124,6 +124,7 @@ define([
             }
 
             return <div className="reservation-page">
+                <h4 className="location">Reservation</h4>
                 <h3 className="title link" onClick={this.gotoOccurrence}>
                     {this.props.eventOccurrenceModel.get('eventName')}
                     {moment(this.props.eventOccurrenceModel.get('startTime')).format(' DD.MM.YY HH:mm')}
