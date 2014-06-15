@@ -37,6 +37,7 @@ define([
             eventComponents = eventModels.map(toComponent);
 
             return React.DOM.div( {className:"event-page"}, 
+                React.DOM.h4( {className:"location"}, "Events"),
                 eventComponents
             );
         },

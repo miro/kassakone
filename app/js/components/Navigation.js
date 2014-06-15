@@ -11,10 +11,10 @@ define([
         render: function() {
             return React.DOM.div( {className:"navigation-bar"}, 
                 React.DOM.h1( {className:"title"}, "RIOT"),
-                React.DOM.div( {className:"links"}, 
-                    React.DOM.a( {href:"#"}, "Events"),
-                    React.DOM.a( {href:"#search"}, "Search"),
-                    React.DOM.a( {href:"#logout"}, "Logout")
+                React.DOM.div( {className:"links clearfix"}, 
+                    React.DOM.a( {href:"#"}, React.DOM.button( {className:"events"}, "Events")),
+                    React.DOM.a( {href:"#search"}, React.DOM.button( {className:"search"}, "Search")),
+                    React.DOM.a( {href:"#logout"}, React.DOM.button( {className:"logout"}, "Logout"))
                 )  
             );
         }

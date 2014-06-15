@@ -58,24 +58,23 @@ define([
                 eventOccurrenceComponents.push(EventOccurrence( {model:model, key:model.id} ));
             });
 
-            return (
-                React.DOM.div( {className:"event"}, 
-                    React.DOM.h2( {className:"name"}, 
-                        this.props.model.get('name')
-                    ),
-                    React.DOM.p( {className:"description"}, 
-                        this.props.model.get('description')
-                    ),
-                    React.DOM.p( {className:"duration"}, 
-                        "Duration: ", this.duration()
-                    ),
+            return React.DOM.div( {className:"event-page"}, 
+                React.DOM.h4( {className:"location"}, "Event"),
+                React.DOM.h2( {className:"name"}, 
+                    this.props.model.get('name')
+                ),
+                React.DOM.p( {className:"description"}, 
+                    this.props.model.get('description')
+                ),
+                React.DOM.p( {className:"duration"}, 
+                    "Duration: ", this.duration()
+                ),
 
-                    React.DOM.hr(null ),
+                React.DOM.hr(null ),
 
-                    React.DOM.h3(null, "Occurrences"),
-                    React.DOM.div( {className:"occurrences"}, 
-                        eventOccurrenceComponents
-                    )
+                React.DOM.h3(null, "Occurrences"),
+                React.DOM.div( {className:"occurrences"}, 
+                    eventOccurrenceComponents
                 )
             )
         },

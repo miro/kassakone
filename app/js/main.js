@@ -13,10 +13,12 @@ require.config({
 
 // Load main module to start the app
 require([
+	'underscore',
 	'backbone',
 	'router',
 	'app'
 ], function(
+	_,
 	Backbone,
 	Router,
 	app
@@ -28,6 +30,8 @@ require([
 	app.navigate = function(route) {
 		app.router.jumpTo(route);
 	};
+
+	app.vent = _.clone(Backbone.Events)
 
 	console.log("App started");
 

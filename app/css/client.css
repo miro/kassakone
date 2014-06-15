@@ -42,7 +42,7 @@ table {
 
 body {
   font-family: "Helvetica Neue", arial, sans-serif;
-  font-size: 15px; }
+  font-size: 18px; }
 
 #root {
   width: 100%;
@@ -50,7 +50,7 @@ body {
   margin: 0 auto;
   padding: 0 1em; }
 
-.button, .small-button, .navigation-bar .links a, button {
+.button, button {
   padding: 1em;
   color: #fff;
   text-transform: uppercase;
@@ -58,19 +58,16 @@ body {
   background-color: #FF696E;
   border: 0;
   font-weight: 100;
+  font-size: 0.75em;
   letter-spacing: 0.1em;
   text-align: center;
   cursor: pointer;
   -webkit-transition: background-color 0.1s;
   transition: background-color 0.1s; }
-  .button:hover, .small-button:hover, .navigation-bar .links a:hover, button:hover {
+  .button:hover, button:hover {
     background: #FFAFAC; }
-  .button.full, .full.small-button, .navigation-bar .links a.full, button.full {
+  .button.full, button.full {
     width: 100%; }
-
-.small-button, .navigation-bar .links a {
-  font-size: 0.7em;
-  font-weight: 200; }
 
 .input {
   width: 100%;
@@ -95,15 +92,20 @@ input:focus, button:focus {
 h1, h2, h3, h4 {
   letter-spacing: 0.05em;
   color: #FF696E;
-  margin-bottom: 0.5em; }
+  margin: 0.5em 0; }
+  h1.link, h2.link, h3.link, h4.link {
+    cursor: pointer; }
+    h1.link:hover, h2.link:hover, h3.link:hover, h4.link:hover {
+      background-color: #FF696E;
+      color: #FFF; }
 
 h1 {
-  font-size: 3em;
+  font-size: 1.8em;
   text-transform: uppercase;
   font-weight: 100; }
 
 h2 {
-  font-size: 2em;
+  font-size: 1.3em;
   text-transform: uppercase;
   font-weight: 200; }
 
@@ -125,6 +127,15 @@ h1.title {
   text-align: right;
   background-color: #FF696E;
   color: #FFF; }
+
+h4.location {
+  display: inline-block;
+  color: #FFF;
+  background-color: #FF696E;
+  padding: 3px 0;
+  text-align: center;
+  width: 100%;
+  margin: 0; }
 
 p {
   margin-bottom: 0.5em; }
@@ -161,7 +172,7 @@ hr {
     margin-bottom: 1em; }
 
 .search-page input {
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 0.1em; }
 
 .occurrence-page .meta {
@@ -177,8 +188,12 @@ hr {
   .occurrence-page .meta button#sellticket {
     float: right; }
 
-.reservation-page button.cancelButton {
-  float: right; }
+.reservation-page .buttons {
+  margin-top: 0.7em; }
+  .reservation-page .buttons button {
+    margin: 0 auto 1em auto;
+    display: block;
+    min-width: 80%; }
 
 .event-component {
   display: block;
@@ -227,13 +242,14 @@ hr {
     display: inline-block; }
 
 .navigation-bar {
-  margin-bottom: 1em;
+  margin-bottom: 0.2em;
   padding: 0.5em 0;
   text-align: center;
   border-bottom: 2px solid #FF696E; }
-  .navigation-bar .links a {
-    display: inline-block;
-    margin: 0 0.2em; }
+  .navigation-bar .links .events, .navigation-bar .links .search {
+    float: left; }
+  .navigation-bar .links .logout {
+    float: right; }
 
 .reservation-component {
   width: 100%;
@@ -247,12 +263,12 @@ hr {
     margin: 0.5em; }
   .reservation-component .reserver {
     float: left;
-    font-size: 1em;
-    margin: 1em; }
+    font-size: 0.7em;
+    margin: 1.5em 0.1em; }
   .reservation-component .status {
     margin: 0;
     display: inline-block;
-    padding: 1em 1em;
+    padding: 1em 0.5em;
     height: 100%;
     position: absolute;
     right: 0;
@@ -260,12 +276,14 @@ hr {
     color: white;
     font-weight: 100;
     letter-spacing: 0.1em;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 0.7em; }
     .reservation-component .status.redeemed {
       background-color: #FFAFAC; }
 
 .footer {
   border-top: 1px solid #FF696E;
+  margin-top: 20px;
   padding: 0.5em 0;
   text-align: right;
   font-size: 0.7em;

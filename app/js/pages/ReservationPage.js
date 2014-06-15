@@ -85,6 +85,10 @@ define([
                 app.navigate('');
             }
         },
+
+        gotoOccurrence: function() {
+            app.router.jumpToOccurrence(this.props.eventOccurrenceModel);
+        },
         
         render: function() {
             var reservationStatus = this.props.model.get('status');
@@ -95,7 +99,7 @@ define([
 
             switch (reservationStatus) {
                 case "RESERVED":
-                    reservationStatusDescription = 'Reservation expires ' + moment(this.props.model.get('keke')).format('DD.MM.YY HH:mm');
+                    reservationStatusDescription = 'Reservation is valid, waiting for redemption';
                     buttons.push(React.DOM.button( {className:"button", className:"redeemButton", onClick:this.redeemReservation}, "Redeem reservation"));
                     buttons.push(React.DOM.button( {className:"button", className:"cancelButton", onClick:this.cancelReservation}, "Delete reservation"));
                     break;
@@ -120,9 +124,10 @@ define([
             }
 
             return React.DOM.div( {className:"reservation-page"}, 
-                React.DOM.h3( {className:"title"}, 
+                React.DOM.h4( {className:"location"}, "Reservation"),
+                React.DOM.h3( {className:"title link", onClick:this.gotoOccurrence}, 
                     this.props.eventOccurrenceModel.get('eventName'),
-                    moment(this.props.model.get('startTime')).format(' DD.MM.YY HH:mm')
+                    moment(this.props.eventOccurrenceModel.get('startTime')).format(' DD.MM.YY HH:mm')
                 ),
                 React.DOM.h3( {className:"id"}, 
                     "Reservation ID: ", this.props.model.get('id'),reserverDescription
@@ -131,7 +136,7 @@ define([
                 React.DOM.h3(null, sellerDescription),
                 React.DOM.p(null, reservationStatusDescription),
 
-                React.DOM.div( {className:"buttons"}, buttons)
+                React.DOM.div( {className:"buttons clearfix"}, buttons)
             )
         },
 

@@ -143,12 +143,8 @@ define([
         // when searching for reservation
         jumpToReservation: function(reservationModel) {
             if (this.checkCredentials()) {
-                window.history.pushState("", "", "/#reservation/" + reservationModel.id);
-                this.chrome.setProps({
-                    content: ReservationPage( 
-                        {reservationId:reservationModel.id, 
-                        model:reservationModel} )
-                });
+                this.jumpTo('reservation/' + reservationModel.id);
+
             }
         },
 
@@ -173,18 +169,7 @@ define([
         // Same thing as with jumpToReservation
         jumpToOccurrence: function(occurrenceModel) {
             if (this.checkCredentials()) {
-                window.history.pushState("", "", "/#event/" + occurrenceModel.eventId + "/occurrence/" + occurrenceModel.get('id'));
-                Backbone.history.checkUrl();
-
-                app.data.reservations.reset([]);
-                app.data.reservations.occurrenceId = occurrenceModel.get('id');
-                app.data.reservations.fetch();
-
-                this.chrome.setProps({
-                    content: EventOccurrencePage( 
-                        {occurrence:occurrenceModel, 
-                        reservations:app.data.reservations} )
-                });
+                this.jumpTo("event/" + occurrenceModel.eventId + "/occurrence/" + occurrenceModel.get('id'));
             }
         },
 

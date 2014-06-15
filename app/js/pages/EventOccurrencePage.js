@@ -56,6 +56,8 @@ define([
         },
 
         sellTicket: function sellTicket() {
+            if(!confirm('Do you want to sell one ticket to this occurrence?')) return;
+
             var self = this;
             var reservationModel = new ReservationModel();
             reservationModel.occurrenceId = this.props.occurrence.get('id');
@@ -86,6 +88,7 @@ define([
 
 
             return React.DOM.div( {className:"occurrence-page"}, 
+                React.DOM.h4( {className:"location"}, "Occurrence"),
                 React.DOM.h3( {className:"title"}, 
                     this.props.eventModel.get('name'), 
                     moment(this.props.occurrence.get('startTime')).format(' DD.MM.YY HH:mm')
