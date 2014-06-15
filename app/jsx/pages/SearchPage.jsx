@@ -54,6 +54,7 @@ define([
             notificationClassName += this.state.notificationText ? " show" : " hide";
 
             return <div className="search-page">
+                <h4 className="location">Reservation Search</h4>
                     <input
                         name="reservationCode" 
                         className="input" 
