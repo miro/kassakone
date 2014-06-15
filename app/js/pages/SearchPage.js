@@ -54,6 +54,7 @@ define([
             notificationClassName += this.state.notificationText ? " show" : " hide";
 
             return React.DOM.div( {className:"search-page"}, 
+                React.DOM.h4( {className:"location"}, "Reservation Search"),
                     React.DOM.input(
                         {name:"reservationCode", 
                         className:"input", 
